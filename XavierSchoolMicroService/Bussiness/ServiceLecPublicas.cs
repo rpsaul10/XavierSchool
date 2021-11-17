@@ -2,6 +2,7 @@ using System.Linq;
 using XavierSchoolMicroService.Services;
 using XavierSchoolMicroService.Models;
 using System.Collections.Generic;
+using XavierSchoolMicroService.Utilities;
 using System;
 
 namespace XavierSchoolMicroService.Bussiness
@@ -60,7 +61,7 @@ namespace XavierSchoolMicroService.Bussiness
             return new {
                         IdLeccionpub = lec.IdLeccionpub,
                         NombreLeccionpub = lec.NombreLeccionpub,
-                        HoraLeccionpub = lec.HoraLeccionpub == null ? null : lec.HoraLeccionpub.Value.ToString(@"hh\:mm"),
+                        HoraLeccionpub = Utils.ConvertirTimeSpanToStringHora(lec.HoraLeccionpub),
                         FechaLeccionpu = lec.FechaLeccionpu,
                         MaestroLeccionP = $"{teach.NombreProfesor} {teach.ApellidoProfesor}"
                     };
@@ -72,7 +73,7 @@ namespace XavierSchoolMicroService.Bussiness
 
             try
             {
-                lec.HoraLeccionpub = ConvertirHoraToTimeSpan(hour);
+                lec.HoraLeccionpub = Utils.ConvertirHoraToTimeSpan(hour);
                 _context.Leccionpublicas.Add(lec);
                 _context.SaveChanges();
                 var recent = _context.Leccionpublicas.OrderBy(l => l.IdLeccionpub).LastOrDefault();
@@ -99,14 +100,14 @@ namespace XavierSchoolMicroService.Bussiness
             throw new System.NotImplementedException();
         }
 
-        public static TimeSpan ConvertirHoraToTimeSpan(string hour)
-        {
-            string[] sep = hour.Split(':');
-            int h = int.Parse(sep[0]);
-            int m = int.Parse(sep[1]);
+        // public static TimeSpan ConvertirHoraToTimeSpan(string hour)
+        // {
+        //     string[] sep = hour.Split(':');
+        //     int h = int.Parse(sep[0]);
+        //     int m = int.Parse(sep[1]);
 
-            TimeSpan timeSpan = new DateTime(2010, 1, 1, h, m, 0)  - new DateTime(2010, 1, 1, 0, 0, 0);
-            return timeSpan;
-        }
+        //     TimeSpan timeSpan = new DateTime(2010, 1, 1, h, m, 0)  - new DateTime(2010, 1, 1, 0, 0, 0);
+        //     return timeSpan;
+        // }
     }
 }

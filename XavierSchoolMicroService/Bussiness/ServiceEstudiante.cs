@@ -113,7 +113,7 @@ namespace XavierSchoolMicroService.Bussiness
                         NombreEstudiante = est.NombreEstudiante,
                         ApellidoEstudiante = est.ApellidoEstudiante,
                         FechaNacimiento = est.FechaNacimiento,
-                        DormitorioEst =  FinalEstudiante.BuildDicDormitorio(dorm.NumeroDpto, dorm.Piso),
+                        DormitorioEst =  Utils.BuildDicDormitorio(dorm.NumeroDpto, dorm.Piso),
                         NssEstudiante = est.NssEstudiante,
                         ActivoOInactivo = est.ActivoOInactivo,
                         Nivelpoder = niv.NombreNivel

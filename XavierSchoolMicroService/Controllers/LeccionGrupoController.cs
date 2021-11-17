@@ -54,12 +54,15 @@ namespace XavierSchoolMicroService.Controllers
         }
 
         [HttpPost ("api/lecGrupo/save")]
-        public IActionResult SaveLeccionGrupo([FromBody] Comp c)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult SaveLeccionGrupo([FromBody] RequestBodyPublic c)
         {
             try
             {
-                var res = _service.SaveLeccPublica(c.lec, c.est, c.h);
-                return Ok ("Llego");  
+                var res = _service.SaveLeccPublica(c.lec, c.est, c.hour);
+                return Ok (res);  
             }
             catch (System.Exception)
             {
@@ -68,10 +71,10 @@ namespace XavierSchoolMicroService.Controllers
         }
     }
 
-    public class Comp
+    public class RequestBodyPublic
     {
         public Leccionpublica lec { get; set; }
         public List<int> est { get; set; }
-        public string h { get; set; }
+        public string hour { get; set; }
     }
 }
