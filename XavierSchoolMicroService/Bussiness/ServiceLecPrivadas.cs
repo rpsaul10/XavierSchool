@@ -1,15 +1,20 @@
 using System.Linq;
+using Microsoft.AspNetCore.DataProtection;
 using XavierSchoolMicroService.Models;
 using XavierSchoolMicroService.Services;
+using XavierSchoolMicroService.Utilities;
 
 namespace XavierSchoolMicroService.Bussiness
 {
     public class ServiceLecPrivadas : IServiceLecPrivadas
     {
         private readonly escuela_xavierContext _context;
-        public ServiceLecPrivadas(escuela_xavierContext context)
+        private readonly IDataProtector _protector;
+        private const string PURPOSE = "LeccionesPrivadasProtection";
+        public ServiceLecPrivadas(escuela_xavierContext context, IDataProtectionProvider provider)
         {
             _context = context;
+            _protector = provider.CreateProtector(PURPOSE);
         }
         public IQueryable<object> GetAll()
         {
@@ -18,7 +23,7 @@ namespace XavierSchoolMicroService.Bussiness
                 var lePri = from lec in _context.Leccionprivada
                             join te in _context.Profesores on lec.FkProfesorLpriv equals te.IdProfesor
                             join es in _context.Estudiantes on lec.FkEstudianteLpriv equals es.IdEstudiante
-                            select CleanLecPrivadaData(lec, te, es);
+                            select CleanLecPrivadaData(lec, te, es, _protector);
                 return lePri;
             }
             catch (System.Exception)
@@ -32,11 +37,12 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 var lePri = from lec in _context.Leccionprivada
                             join te in _context.Profesores on lec.FkProfesorLpriv equals te.IdProfesor
                             join es in _context.Estudiantes on lec.FkEstudianteLpriv equals es.IdEstudiante
-                            where lec.IdLeccionpriv == int.Parse(id)
-                            select CleanLecPrivadaData(lec, te, es);  
+                            where lec.IdLeccionpriv == int.Parse(idStr)
+                            select CleanLecPrivadaData(lec, te, es, _protector);  
 
                 if (lePri.Count() == 0)
                     return null;
@@ -65,10 +71,14 @@ namespace XavierSchoolMicroService.Bussiness
             throw new System.NotImplementedException();
         }
 
-        public static object CleanLecPrivadaData(Leccionprivadum lec, Profesore te, Estudiante es)
+        public static object CleanLecPrivadaData(Leccionprivadum lec, Profesore te, Estudiante es, IDataProtector protector)
         {
+            // Falta
+            string idProtect = null;
+            if (protector != null)
+                idProtect = protector.Protect(lec.IdLeccionpriv.ToString());
             return new {
-                IdLeccionpriv = lec.IdLeccionpriv,
+                IdLeccionpriv = idProtect,
                 NombreLeccionpriv = lec.NombreLeccionpriv,
                 HoraLeccionpriv = Utilities.Utils.ConvertirTimeSpanToStringHora(lec.HoraLeccionpriv),
                 FechaLeccionpriv = lec.FechaLeccionpriv,

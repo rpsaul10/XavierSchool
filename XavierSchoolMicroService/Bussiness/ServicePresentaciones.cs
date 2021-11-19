@@ -3,23 +3,27 @@ using XavierSchoolMicroService.Services;
 using XavierSchoolMicroService.Models;
 using System.Collections.Generic;
 using XavierSchoolMicroService.Utilities;
+using Microsoft.AspNetCore.DataProtection;
 
 namespace XavierSchoolMicroService.Bussiness
 {
     public class ServicePresentaciones : IServicePresentaciones
     {
         private readonly escuela_xavierContext _context;
+        private const string PURPOSE = "PresentacionesProtection";
+        private readonly IDataProtector _protector;
 
-        public ServicePresentaciones(escuela_xavierContext context)
+        public ServicePresentaciones(escuela_xavierContext context, IDataProtectionProvider provider)
         {
             _context = context;
+            _protector = provider.CreateProtector(PURPOSE);
         }
 
         public IQueryable<object> GetAll()
         {
             try
             {
-               var pres = _context.Presentaciones.Select(p => CleanPresentacionData(p));
+               var pres = _context.Presentaciones.Select(p => CleanPresentacionData(p, _protector));
                return pres;
             }
             catch (System.Exception)
@@ -33,11 +37,12 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 var ests = from es in _context.Estudiantes
                         join es_tr in _context.PresentacionesEstudiantes on es.IdEstudiante equals es_tr.FkEstudiantePres
                         join niv in _context.Nivelpoders on es.FkNivelpoderEst equals niv.IdNivel
                         join dor in _context.Dormitorios on es.FkDormitorioEst equals dor.IdDormitorio
-                        where es_tr.FkPresentacionEst == int.Parse(id)
+                        where es_tr.FkPresentacionEst == int.Parse(idStr)
                         select new {
                             Estudiante = ServiceEstudiante.CleanEstudianteData(es, dor, niv, null),
                             EstadoPresentacion = es_tr.EstadoPresentacion
@@ -55,10 +60,11 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
-                var pre = _context.Presentaciones.Where(p => p.IdPresentacion == int.Parse(id)).FirstOrDefault();
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
+                var pre = _context.Presentaciones.Where(p => p.IdPresentacion == int.Parse(idStr)).FirstOrDefault();
                 if (pre == null)
                     return null;
-                return CleanPresentacionData(pre);
+                return CleanPresentacionData(pre, _protector);
             }
             catch (System.Exception)
             {
@@ -71,10 +77,11 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 var profs = from te in _context.Profesores
                             join te_pr in _context.PresentacionesProfesores on te.IdProfesor equals te_pr.FkProfesorPres
-                            where te_pr.FkPresentacionPres == int.Parse(id)
-                            select ServiceProfesores.CleanProfesorData(te);
+                            where te_pr.FkPresentacionPres == int.Parse(idStr)
+                            select ServiceProfesores.CleanProfesorData(te, null);
                 return profs;    
             }
             catch (System.Exception)
@@ -123,10 +130,14 @@ namespace XavierSchoolMicroService.Bussiness
             throw new System.NotImplementedException();
         }
 
-        public static object CleanPresentacionData(Presentacione p)
+        public static object CleanPresentacionData(Presentacione p, IDataProtector protector)
         {
+            string idProtect = null;
+            if (protector != null)
+                idProtect = protector.Protect(p.IdPresentacion.ToString());
+            
             return new {
-                   IdPresentacion = p.IdPresentacion,
+                   IdPresentacion = idProtect,
                    NombrePresentacion = p.NombrePresentacion,
                    FechaPresentacion = p.FechaPresentacion,
                    HoraPresentacion = Utils.ConvertirTimeSpanToStringHora(p.HoraPresentacion)

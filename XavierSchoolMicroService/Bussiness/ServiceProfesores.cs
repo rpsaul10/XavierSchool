@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.DataProtection;
 using XavierSchoolMicroService.Models;
 using XavierSchoolMicroService.Services;
 using System.Linq;
+using XavierSchoolMicroService.Utilities;
 
 namespace XavierSchoolMicroService.Bussiness
 {
@@ -20,8 +21,11 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
-                var teachers = _context.Profesores.Skip(skip).Take(take).Select(p => CleanProfesorData(p));
+                var teachers = _context.Profesores.Skip(skip).Take(take).Select(p => CleanProfesorData(p, _protector));
                 return teachers;
+            }catch (System.Security.Cryptography.CryptographicException)
+            {
+                return null;
             }
             catch (System.Exception)
             {
@@ -34,11 +38,12 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
-                var teacher = _context.Profesores.Where(p => p.IdProfesor == int.Parse(id)).FirstOrDefault();
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
+                var teacher = _context.Profesores.Where(p => p.IdProfesor == int.Parse(idStr)).FirstOrDefault();
                 if (teacher == null)
                     return null;
                 
-                return CleanProfesorData(teacher);
+                return CleanProfesorData(teacher, _protector);
             }
             catch (System.Exception)
             {
@@ -66,7 +71,8 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
-                var oldDtata = _context.Profesores.Where(p => p.IdProfesor == int.Parse(id)).FirstOrDefault();
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
+                var oldDtata = _context.Profesores.Where(p => p.IdProfesor == int.Parse(idStr)).FirstOrDefault();
             
                 if (oldDtata != null)
                 {
@@ -88,10 +94,13 @@ namespace XavierSchoolMicroService.Bussiness
             throw new System.NotImplementedException();
         }
 
-        public static object CleanProfesorData(Profesore teacher)
+        public static object CleanProfesorData(Profesore teacher, IDataProtector protector)
         {
+            string idProtect = null;
+            if (protector != null)
+                idProtect = protector.Protect(teacher.IdProfesor.ToString());
             return new {
-                IdProfesor = teacher.IdProfesor,
+                IdProfesor = idProtect,
                 NombreProfesor = teacher.NombreProfesor,
                 ApellidoProfesor = teacher.ApellidoProfesor,
                 FechaNacimientopr = teacher.FechaNacimientopr,
@@ -104,11 +113,12 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 var leccs = from lec in _context.Leccionpublicas
                             join prof in _context.Profesores on lec.FkProfesorLpub equals prof.IdProfesor
-                            where prof.IdProfesor == int.Parse(id)
-                            select ServiceLecPublicas.CleanLecPubliData(lec, prof);
-                return leccs;   
+                            where prof.IdProfesor == int.Parse(idStr)
+                            select ServiceLecPublicas.CleanLecPubliData(lec, prof, null);
+                return leccs;
             }
             catch (System.Exception)
             {
@@ -121,11 +131,12 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 var leccs = from lec in _context.Leccionprivada
                             join te in _context.Profesores on lec.FkProfesorLpriv equals te.IdProfesor
                             join es in _context.Estudiantes on lec.FkEstudianteLpriv equals es.IdEstudiante
-                            where lec.FkProfesorLpriv == int.Parse(id)
-                            select ServiceLecPrivadas.CleanLecPrivadaData(lec, te, es);
+                            where lec.FkProfesorLpriv == int.Parse(idStr)
+                            select ServiceLecPrivadas.CleanLecPrivadaData(lec, te, es, null);
                 return leccs;
             }
             catch (System.Exception)
@@ -139,10 +150,11 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 var pres = from pre in _context.Presentaciones
                             join pre_pro in _context.PresentacionesProfesores on pre.IdPresentacion equals pre_pro.FkPresentacionPres
-                            where pre_pro.FkProfesorPres == int.Parse(id)
-                            select ServicePresentaciones.CleanPresentacionData(pre);
+                            where pre_pro.FkProfesorPres == int.Parse(idStr)
+                            select ServicePresentaciones.CleanPresentacionData(pre, null);
                 return pres;    
             }
             catch (System.Exception)

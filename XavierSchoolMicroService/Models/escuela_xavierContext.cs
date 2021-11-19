@@ -29,6 +29,7 @@ namespace XavierSchoolMicroService.Models
         public virtual DbSet<PresentacionesEstudiante> PresentacionesEstudiantes { get; set; }
         public virtual DbSet<PresentacionesProfesore> PresentacionesProfesores { get; set; }
         public virtual DbSet<Profesore> Profesores { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
 
 //         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //         {
@@ -363,6 +364,38 @@ namespace XavierSchoolMicroService.Models
                 entity.Property(e => e.NssProfesor)
                     .HasMaxLength(45)
                     .HasColumnName("nss_profesor");
+            });
+
+            modelBuilder.Entity<Usuario>(entity =>
+            {
+                entity.HasKey(e => e.IdUsuario)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("usuarios");
+
+                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+
+                entity.Property(e => e.ApellidoUsuario)
+                    .HasMaxLength(45)
+                    .HasColumnName("apellido_usuario");
+
+                entity.Property(e => e.Correo)
+                    .IsRequired()
+                    .HasMaxLength(65)
+                    .HasColumnName("correo");
+
+                entity.Property(e => e.EstadoAdministrador)
+                    .HasColumnType("tinyint")
+                    .HasColumnName("estadoAdministrador");
+
+                entity.Property(e => e.NombreUsuario)
+                    .HasMaxLength(45)
+                    .HasColumnName("nombre_usuario");
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasColumnType("longtext")
+                    .HasColumnName("password");
             });
 
             OnModelCreatingPartial(modelBuilder);

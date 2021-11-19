@@ -10,10 +10,8 @@ namespace XavierSchoolMicroService.Bussiness
 {
     public class ServiceEstudiante : IServiceEstudiante
     {
-        public static readonly int LENT = 4;
         private readonly escuela_xavierContext _context;
         private const string PURPOSE = "EstudiantesProtection";
-
         private readonly IDataProtector _protector;
 
         public ServiceEstudiante (escuela_xavierContext context, IDataProtectionProvider provider)
@@ -42,7 +40,7 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try 
             {
-                var idStr = id.Count() > LENT ? _protector.Unprotect(id) : id;
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 var estu = from est in _context.Estudiantes
                         join dorm in _context.Dormitorios on est.FkDormitorioEst equals dorm.IdDormitorio
                         join niv in _context.Nivelpoders on est.FkNivelpoderEst equals niv.IdNivel
@@ -91,7 +89,7 @@ namespace XavierSchoolMicroService.Bussiness
 
         public bool UpdateEstudiante(string id, Estudiante estudiante, List<int> powerList)
         {
-            var idStr = id.Count() > LENT ? _protector.Unprotect(id) : id;
+            var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
             var transaction = _context.Database.BeginTransaction();
             try
             {
@@ -160,7 +158,7 @@ namespace XavierSchoolMicroService.Bussiness
 
         public IQueryable<object> GetPowersByEstudiante(string id)
         {
-            var idStr = id.Count() > LENT ? _protector.Unprotect(id) : id;
+            var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
             try
             {
                 return from pod in _context.Poderes
@@ -179,12 +177,12 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
-                var idStr = id.Count() > LENT ? _protector.Unprotect(id) : id;
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 var lecc = from lec in _context.Leccionpublicas
                             join te in _context.Profesores on lec.FkProfesorLpub equals te.IdProfesor
                             join lec_est in _context.LeccionesEstudiantes on lec.IdLeccionpub equals lec_est.FkLeccionEst
                             where lec_est.FkEstudianteLec == int.Parse(idStr)
-                            select ServiceLecPublicas.CleanLecPubliData(lec, te);
+                            select ServiceLecPublicas.CleanLecPubliData(lec, te, null);
                 return lecc;
             }
             catch (System.Exception)
@@ -198,12 +196,12 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
-                var idStr = id.Count() > LENT ? _protector.Unprotect(id) : id;
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 var leccs = from lec in _context.Leccionprivada
                             join te in _context.Profesores on lec.FkProfesorLpriv equals te.IdProfesor
                             join es in _context.Estudiantes on lec.FkEstudianteLpriv equals es.IdEstudiante
                             where lec.FkEstudianteLpriv == int.Parse(idStr)
-                            select ServiceLecPrivadas.CleanLecPrivadaData(lec, te, es);
+                            select ServiceLecPrivadas.CleanLecPrivadaData(lec, te, es, null);
                 return leccs;
             }
             catch (System.Exception)
@@ -239,11 +237,11 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
-                var idStr = id.Count() > LENT ? _protector.Unprotect(id) : id;
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 var pres = from pre in _context.Presentaciones
                             join es_pr in _context.PresentacionesEstudiantes on pre.IdPresentacion equals es_pr.FkPresentacionEst
                             where es_pr.FkEstudiantePres == int.Parse(idStr)
-                            select ServicePresentaciones.CleanPresentacionData(pre);
+                            select ServicePresentaciones.CleanPresentacionData(pre, null);
                 return pres;
             }
             catch (System.Exception)

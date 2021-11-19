@@ -4,25 +4,30 @@ using XavierSchoolMicroService.Models;
 using System.Collections.Generic;
 using XavierSchoolMicroService.Utilities;
 using System;
+using Microsoft.AspNetCore.DataProtection;
 
 namespace XavierSchoolMicroService.Bussiness
 {
     public class ServiceLecPublicas : IServiceLecPublicas
     {
         private readonly escuela_xavierContext _context;
-        public ServiceLecPublicas(escuela_xavierContext context)
+        private const string PURPOSE = "LeccionesPublicasProtection";
+        private readonly IDataProtector _protector;
+        public ServiceLecPublicas(escuela_xavierContext context, IDataProtectionProvider provider)
         {
+            _protector = provider.CreateProtector(PURPOSE);
             _context = context;
         }
         public IQueryable<object> EtudiantesPorLeccion(string id)
         {
             try
             {
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 var estuds = from es in _context.Estudiantes
                             join es_le in _context.LeccionesEstudiantes on es.IdEstudiante equals es_le.FkEstudianteLec
                             join ni in _context.Nivelpoders on es.FkNivelpoderEst equals ni.IdNivel
                             join dor in _context.Dormitorios on es.FkDormitorioEst equals dor.IdDormitorio
-                            where es_le.FkLeccionEst == int.Parse(id)
+                            where es_le.FkLeccionEst == int.Parse(idStr)
                             select ServiceEstudiante.CleanEstudianteData(es, dor, ni, null);
                 return estuds;
             }
@@ -39,7 +44,7 @@ namespace XavierSchoolMicroService.Bussiness
             {
                 var lecciones = from lec in _context.Leccionpublicas
                                 join teach in _context.Profesores on lec.FkProfesorLpub equals teach.IdProfesor
-                                select CleanLecPubliData(lec, teach);
+                                select CleanLecPubliData(lec, teach, _protector);
 
                 return lecciones;
             }
@@ -54,10 +59,11 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 var lecciones = from lec in _context.Leccionpublicas
                                 join teach in _context.Profesores on lec.FkProfesorLpub equals teach.IdProfesor
-                                where lec.IdLeccionpub == int.Parse(id)
-                                select CleanLecPubliData(lec, teach);
+                                where lec.IdLeccionpub == int.Parse(idStr)
+                                select CleanLecPubliData(lec, teach, _protector);
                 
                 if (lecciones.Count() == 0)
                     return null;
@@ -70,10 +76,13 @@ namespace XavierSchoolMicroService.Bussiness
             throw new System.NotImplementedException();
         }
 
-        public static object CleanLecPubliData(Leccionpublica lec, Profesore teach)
+        public static object CleanLecPubliData(Leccionpublica lec, Profesore teach, IDataProtector protector)
         {
+            string idProtect = null;
+            if (protector != null)
+                idProtect = protector.Protect(lec.IdLeccionpub.ToString());
             return new {
-                        IdLeccionpub = lec.IdLeccionpub,
+                        IdLeccionpub = idProtect,
                         NombreLeccionpub = lec.NombreLeccionpub,
                         HoraLeccionpub = Utils.ConvertirTimeSpanToStringHora(lec.HoraLeccionpub),
                         FechaLeccionpu = lec.FechaLeccionpu,
