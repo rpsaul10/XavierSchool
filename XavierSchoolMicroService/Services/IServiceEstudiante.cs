@@ -10,11 +10,11 @@ namespace XavierSchoolMicroService.Services
     {
         IQueryable<object> GetAll();
         object GetEstudiante(string id);
-        bool SaveEstudiante(Estudiante estudiante);
-        bool UpdateEstudiante(string id, Estudiante estudiante);
-        IQueryable<string> GetPowersByEstudiante(string id);
-
+        bool SaveEstudiante(Estudiante estudiante, List<int> powerList);
+        bool UpdateEstudiante(string id, Estudiante estudiante, List<int> powerList);
+        IQueryable<object> GetPowersByEstudiante(string id);
         IQueryable<object> GetLeccionesPublicasByIdEstu(string id);
-
+        IQueryable<object> GetLeccionesPrivadasByIdEstu(string id);
+        IQueryable<object> GetPresentacionesByIdEstu(string id);
     }
 }

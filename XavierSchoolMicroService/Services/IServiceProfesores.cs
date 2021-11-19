@@ -11,7 +11,8 @@ namespace XavierSchoolMicroService.Services
         object GetProfesor(string id);
         bool SaveProfesor(Profesore profesor);
         bool UpdateProfesor(Profesore profesore, string id);
-
         IQueryable<object> GetLeccionesPublicasByIdProf(string id);
+        IQueryable<object> GetLeccionesPrivadasByIdProf(string id);
+        IQueryable<object> GetPresentacionesByIdProf(string id);
     }
 }
