@@ -104,5 +104,37 @@ namespace XavierSchoolMicroService.Controllers
                 throw;
             }
         }
+        
+        [HttpGet ("api/profesores/lecPrivadas/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetLeccionesPrivadasByIdProf(string id)
+        {
+            try
+            {
+                var lecciones = _service.GetLeccionesPrivadasByIdProf(id);
+                return Ok(lecciones);    
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet ("api/profesores/presentaciones/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetPresentacionesByIdProf(string id)
+        {
+            try
+            {
+                var presentaciones = _service.GetPresentacionesByIdProf(id);
+                return Ok (presentaciones);   
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
     }
 }

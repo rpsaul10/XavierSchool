@@ -58,11 +58,11 @@ namespace XavierSchoolMicroService.Controllers
         [HttpPost ("api/estudiantes/save")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult SaveEstudiante([FromBody] Estudiante estudiante)
+        public IActionResult SaveEstudiante([FromBody] RequestForEstudiante req)
         {
             try
             {
-                var b = _service.SaveEstudiante(estudiante);
+                var b = _service.SaveEstudiante(req.estudiante, req.powers); // Falta quitar null
                 return Ok(b);
             }
             catch (System.Exception)
@@ -76,11 +76,11 @@ namespace XavierSchoolMicroService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult UpdateEstudainte([FromBody] Estudiante estudiante, string id)
+        public IActionResult UpdateEstudainte([FromBody] RequestForEstudiante req, string id)
         {
             try
             {
-                var result = _service.UpdateEstudiante(id, estudiante);
+                var result = _service.UpdateEstudiante(id, req.estudiante, req.powers);
 
                 if (result)
                     return Ok ();
@@ -123,5 +123,43 @@ namespace XavierSchoolMicroService.Controllers
                 throw;
             }
         }
+
+        [HttpGet ("api/estudiantes/lecPrivadas/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetLeccionesPrivadasByIdEstu(string id)
+        {
+            try
+            {
+                var less = _service.GetLeccionesPrivadasByIdEstu(id);
+                return Ok (less);
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet ("api/estudiantes/presentaciones/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetPresentacionesByIdEstu(string id)
+        {
+            try
+            {
+                var pres = _service.GetPresentacionesByIdEstu(id);
+                return Ok (pres);    
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+    }
+
+    public class RequestForEstudiante
+    {
+        public Estudiante estudiante { get; set; }
+        public List<int> powers { get; set; }
     }
 }
