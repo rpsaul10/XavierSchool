@@ -116,5 +116,40 @@ namespace XavierSchoolMicroService.Bussiness
             }
             throw new System.NotImplementedException();
         }
+
+        public IQueryable<object> GetLeccionesPrivadasByIdProf(string id)
+        {
+            try
+            {
+                var leccs = from lec in _context.Leccionprivada
+                            join te in _context.Profesores on lec.FkProfesorLpriv equals te.IdProfesor
+                            join es in _context.Estudiantes on lec.FkEstudianteLpriv equals es.IdEstudiante
+                            where lec.FkProfesorLpriv == int.Parse(id)
+                            select ServiceLecPrivadas.CleanLecPrivadaData(lec, te, es);
+                return leccs;
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+            throw new System.NotImplementedException();
+        }
+
+        public IQueryable<object> GetPresentacionesByIdProf(string id)
+        {
+            try
+            {
+                var pres = from pre in _context.Presentaciones
+                            join pre_pro in _context.PresentacionesProfesores on pre.IdPresentacion equals pre_pro.FkPresentacionPres
+                            where pre_pro.FkProfesorPres == int.Parse(id)
+                            select ServicePresentaciones.CleanPresentacionData(pre);
+                return pres;    
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+            throw new System.NotImplementedException();
+        }
     }
 }

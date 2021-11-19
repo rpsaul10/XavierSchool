@@ -18,7 +18,7 @@ namespace XavierSchoolMicroService.Bussiness
                 var lePri = from lec in _context.Leccionprivada
                             join te in _context.Profesores on lec.FkProfesorLpriv equals te.IdProfesor
                             join es in _context.Estudiantes on lec.FkEstudianteLpriv equals es.IdEstudiante
-                            select CleanLecPublicaData(lec, te, es);
+                            select CleanLecPrivadaData(lec, te, es);
                 return lePri;
             }
             catch (System.Exception)
@@ -36,7 +36,7 @@ namespace XavierSchoolMicroService.Bussiness
                             join te in _context.Profesores on lec.FkProfesorLpriv equals te.IdProfesor
                             join es in _context.Estudiantes on lec.FkEstudianteLpriv equals es.IdEstudiante
                             where lec.IdLeccionpriv == int.Parse(id)
-                            select CleanLecPublicaData(lec, te, es);  
+                            select CleanLecPrivadaData(lec, te, es);  
 
                 if (lePri.Count() == 0)
                     return null;
@@ -65,7 +65,7 @@ namespace XavierSchoolMicroService.Bussiness
             throw new System.NotImplementedException();
         }
 
-        public static object CleanLecPublicaData(Leccionprivadum lec, Profesore te, Estudiante es)
+        public static object CleanLecPrivadaData(Leccionprivadum lec, Profesore te, Estudiante es)
         {
             return new {
                 IdLeccionpriv = lec.IdLeccionpriv,
