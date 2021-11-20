@@ -69,6 +69,7 @@ namespace XavierSchoolMicroService
             services.AddScoped<IServiceLecPrivadas, ServiceLecPrivadas>();
             services.AddScoped<IServicePresentaciones, ServicePresentaciones>();
             services.AddScoped<IServicePoderes, ServicePoderes>();
+            services.AddScoped<IServiceUsuarios, ServiceUsuarios>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

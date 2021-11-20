@@ -5,6 +5,7 @@ namespace XavierSchoolMicroService.Utilities
 {
     public class Utils
     {
+        public static readonly int LENT = 4;
         public static Dictionary<string, int?> BuildDicDormitorio(int? Departamento, int? Piso)
         {
             Dictionary<string, int?> dic = new Dictionary<string, int?>();
