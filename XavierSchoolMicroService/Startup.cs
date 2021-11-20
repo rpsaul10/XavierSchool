@@ -15,6 +15,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using XavierSchoolMicroService.Services;
 using XavierSchoolMicroService.Bussiness;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using XavierSchoolMicroService.Utilities;
 
 namespace XavierSchoolMicroService
 {
@@ -51,6 +53,32 @@ namespace XavierSchoolMicroService
                });
             });
 
+            // extracting jwt secret from config file
+            var jwtSection = Configuration.GetSection("JwtSettings");
+            var jwtSettings = jwtSection.Get<JwtSettings>();
+            var key = System.Text.Encoding.ASCII.GetBytes (jwtSettings.Secret);
+
+            // add JwtSettigs object as configuration not service
+            services.Configure<JwtSettings>(jwtSection);
+
+            // add Jwt authentication
+            services.AddAuthentication(authOptions =>
+            {
+               authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+               authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(bearerOptions =>
+            {
+               bearerOptions.RequireHttpsMetadata = false;
+               bearerOptions.SaveToken = true;
+               bearerOptions.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+               {
+                   ValidateIssuerSigningKey = true,
+                   IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(key),
+                   ValidateIssuer = false,
+                   ValidateAudience = false
+               };
+            });
+
             // Puede liquidar
             services.AddDataProtection()
                 .SetApplicationName("XavierSchoolMicroService")
@@ -83,7 +111,8 @@ namespace XavierSchoolMicroService
             app.UseRouting();
             app.UseCors("MY_CORS");
 
-            app.UseAuthorization();
+            app.UseAuthentication ();
+            app.UseAuthorization ();            
 
             app.UseEndpoints(endpoints =>
             {
