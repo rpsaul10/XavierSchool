@@ -72,5 +72,24 @@ namespace XavierSchoolMicroService.Controllers
                 throw;
             }
         }
+
+        [HttpPost ("api/usuarios/autenticar")]
+        [ProducesResponseType (StatusCodes.Status200OK)]
+        [ProducesResponseType (StatusCodes.Status400BadRequest)]
+        public IActionResult AutenticarUsuario([FromBody] Usuario user)
+        {
+            try
+            {
+                var res = _service.AutenticarUsuario(user.Correo, user.Password);
+
+                if (res == null)
+                    return BadRequest("escriba bien, wey");
+                return Ok (res); 
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
     }
 }
