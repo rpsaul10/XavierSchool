@@ -9,6 +9,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using System;
+using Microsoft.Extensions.Logging;
+using System.Security.Cryptography;
 
 namespace XavierSchoolMicroService.Bussiness
 {
@@ -19,10 +21,12 @@ namespace XavierSchoolMicroService.Bussiness
         private const string PURPOSE = "UsuariosProtection";
         private readonly IConfiguration _configuration;
         private readonly JwtSettings _jwtSettings;
+        private readonly ILogger<ServiceUsuarios> _logger;
 
         public ServiceUsuarios(escuela_xavierContext context, IDataProtectionProvider provider,
-                                IConfiguration configuration, IOptions<JwtSettings> options)
+                                IConfiguration configuration, IOptions<JwtSettings> options, ILogger<ServiceUsuarios> logger)
         {
+            _logger = logger;
             _context = context;
             _protector = provider.CreateProtector(PURPOSE);
             _configuration = configuration;
@@ -30,13 +34,39 @@ namespace XavierSchoolMicroService.Bussiness
         }
         public bool DeleteUsuario(string id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                string idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
+                _logger.LogInformation($"Buscando usuario con id : {idStr} para eliminarlo.");
+                var user = _context.Usuarios.Where(u => u.IdUsuario == int.Parse(idStr)).FirstOrDefault();
+
+                if (user == null)
+                    return false;
+
+                _logger.LogInformation($"Eliminando el usuario con id : {idStr}");
+                _context.Usuarios.Remove(user);
+                _context.SaveChanges();
+                return true; 
+            } catch (CryptographicException ce)
+            {
+                _logger.LogError(ce, $"Error al intentar decriptar el id : {id}");
+                throw;
+            } catch (InvalidOperationException ioe)
+            {
+                _logger.LogError(ioe, "Error al intentar convertir cadena a numero");
+                throw;
+            }
+            catch (System.Exception e)
+            {
+                _logger.LogError(e, "Error al intentar eliminar al usuario.");
+                throw;
+            }
         }
 
         public IQueryable<object> GetAll()
         {
             try
-            {    
+            {   _logger.LogInformation("Obteniendo la lista competa de usuarios.");
                 return _context.Usuarios.Select(u => new {
                     IdUsuario = _protector.Protect(u.IdUsuario.ToString()),
                     Correo = u.Correo,
@@ -44,12 +74,16 @@ namespace XavierSchoolMicroService.Bussiness
                     ApellidoUsuario = u.ApellidoUsuario,
                     EstadoAdministrador = u.EstadoAdministrador
                 });
-            }
-            catch (System.Exception)
+            } catch (CryptographicException ce)
             {
+                _logger.LogError(ce, $"Error al intentar encriptar los ids");
                 throw;
             }
-            throw new System.NotImplementedException();
+            catch (System.Exception e)
+            {
+                _logger.LogError(e, "Error al intentar actualizar la informacion del profesor.");
+                throw;
+            }
         }
 
         public object GetUserData(string id)
@@ -57,7 +91,7 @@ namespace XavierSchoolMicroService.Bussiness
             try
             {
                 var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
-
+                _logger.LogInformation($"Obteniendo la informacion del usuario con el id : {idStr}");
                 var user = _context.Usuarios.Where(u => u.IdUsuario == int.Parse(idStr)).Select(u => new {
                     IdUsuario = id,
                     Correo = u.Correo,
@@ -66,18 +100,27 @@ namespace XavierSchoolMicroService.Bussiness
                     EstadoAdministrador = u.EstadoAdministrador
                 }).FirstOrDefault();
                 return user;
-            }
-            catch (System.Exception)
+            } catch (CryptographicException ce)
             {
+                _logger.LogError(ce, $"Error al intentar decriptar el id : {id}");
+                throw;
+            } catch (InvalidOperationException ioe)
+            {
+                _logger.LogError(ioe, "Error al intentar convertir cadena a numero");
                 throw;
             }
-            throw new System.NotImplementedException();
+            catch (System.Exception e)
+            {
+                _logger.LogError(e, "Error al intentar obtener la informacion del usuario");
+                throw;
+            }
         }
 
         public bool SaveUsuario(Usuario usuario)
         {
             try
             {
+                _logger.LogInformation($"Registrando informmacion de nueno usuario {usuario}");
                 string key = _configuration.GetSection("KeyEncrypt").Get<string>();
                 var encryptPassword = EncryptionClass.Encrypt(usuario.Password, key);
                 usuario.Password = encryptPassword;
@@ -85,23 +128,63 @@ namespace XavierSchoolMicroService.Bussiness
                 _context.Usuarios.Add(usuario);
                 _context.SaveChanges();
                 return true;
-            }
-            catch (System.Exception)
+            } catch (CryptographicException ce)
             {
+                _logger.LogError(ce, $"Error al intentar encriptar la contraseña");
+                throw;
+            } catch (InvalidOperationException ioe)
+            {
+                _logger.LogError(ioe, "Error al intentar convertir cadena a numero");
                 throw;
             }
-            throw new System.NotImplementedException();
+            catch (System.Exception e)
+            {
+                _logger.LogError(e, "Error al intentar guardar nuevo usuario.");
+                throw;
+            }
         }
 
         public bool UpdateUsuario(Usuario usuario, string id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                string idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
+                _logger.LogInformation($"Actualizando datos de usuario con id : {idStr}");
+                var user = _context.Usuarios.Where(u => u.IdUsuario == int.Parse(idStr)).FirstOrDefault();
+
+                if (user == null)
+                    return false;
+                
+                string key = _configuration.GetSection("KeyEncrypt").Get<string>();
+                if (!ComparePassword(user.Password, usuario.Password, key)) user.Password = EncryptionClass.Encrypt(usuario.Password, key);
+                if (!user.NombreUsuario.Equals(usuario.NombreUsuario)) user.NombreUsuario = usuario.NombreUsuario;
+                if (!user.ApellidoUsuario.Equals(usuario.ApellidoUsuario)) user.ApellidoUsuario = usuario.ApellidoUsuario;
+                if (!user.Correo.Equals(usuario.Correo)) user.Correo = usuario.Correo;
+                if (user.EstadoAdministrador != usuario.EstadoAdministrador) user.EstadoAdministrador = usuario.EstadoAdministrador;
+
+                _context.SaveChanges();
+                return true;
+            } catch (CryptographicException ce)
+            {
+                _logger.LogError(ce, $"Error al intentar desencriptar el id o encriptar la contraseña");
+                throw;
+            } catch (InvalidOperationException ioe)
+            {
+                _logger.LogError(ioe, "Error al intentar convertir cadena a numero");
+                throw;
+            }
+            catch (System.Exception e)
+            {
+                _logger.LogError(e, "Error al intentar actualizar la informacion del usuario.");
+                throw;
+            }
         }
 
         public object AutenticarUsuario(string mail, string password)
         {
             try
             {
+                _logger.LogInformation($"Auntenticando usuario con mail : {mail}");
                 var key = _configuration.GetSection("KeyEncrypt").Get<string>();
                 var user = _context.Usuarios.Where(u => u.Correo == mail).FirstOrDefault();
 
@@ -136,11 +219,11 @@ namespace XavierSchoolMicroService.Bussiness
                     Token = finalToken
                 };
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
+                _logger.LogError(e, "Error durante la autenticacion");
                 throw;
             }
-            throw new System.NotImplementedException();
         }
 
         public static bool ComparePassword(string passwordEncrypt, string password, string key)
@@ -162,7 +245,8 @@ namespace XavierSchoolMicroService.Bussiness
         {
             try
             {
-                var estado = _context.Usuarios.Where(u => u.IdUsuario == int.Parse(id)).Select(u => u.EstadoAdministrador).FirstOrDefault();
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
+                var estado = _context.Usuarios.Where(u => u.IdUsuario == int.Parse(idStr)).Select(u => u.EstadoAdministrador).FirstOrDefault();
 
                 if (estado == null)
                     return false;
@@ -175,6 +259,19 @@ namespace XavierSchoolMicroService.Bussiness
                 throw;
             }
             throw new NotImplementedException();
+        }
+
+        public string GetCorreoById(string id)
+        {
+            try
+            {
+                var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
+                return _context.Usuarios.Where(u => u.IdUsuario == int.Parse(idStr)).Select(u => u.Correo).FirstOrDefault();  
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
     }
 }
