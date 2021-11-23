@@ -43,16 +43,16 @@ namespace XavierSchoolMicroService.Controllers
             }
         }
 
-        [HttpGet ("api/estudiantes/{id}")]
+        [HttpGet ("api/estudiantes/{id}&{mode}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Estudiante))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetEstudiante(string id)
+        public IActionResult GetEstudiante(string id, byte mode)
         {
             try
             {
                 _logger.LogInformation($"User -> Intentando obtener los datos del estudiante con id : {id}");
-                var e = _service.GetEstudiante(id);
+                var e = _service.GetEstudiante(id, mode);
                 
                 // Si todo sale bien retorn Ok 200
                 if (e != null)
@@ -267,6 +267,23 @@ namespace XavierSchoolMicroService.Controllers
                 // Si llegamos hasta aca significa que hubo un problema interno no esperado
                 // Se retorna la excepcion y un RequestCode de 500
                 _logger.LogError(e, "User -> Un error ocurrio durante la obtencion de las presentaciones por un id de estudiante");
+                throw;
+            }
+        }
+
+
+        [HttpGet ("api/niveles/all")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetNiveles()
+        {
+            try
+            {
+                var res = ((Bussiness.ServiceEstudiante) _service).GetNiveles();
+                return Ok (res);
+            }
+            catch (System.Exception)
+            {
                 throw;
             }
         }
