@@ -42,7 +42,7 @@ namespace XavierSchoolMicroService.Controllers
             }
         }
 
-        [HttpGet ("api/poderes/save")]
+        [HttpPost ("api/poderes/save")]
         [ProducesResponseType (StatusCodes.Status200OK)]
         [ProducesResponseType (StatusCodes.Status400BadRequest)]
         public IActionResult SavePoder([FromBody] string poder)
