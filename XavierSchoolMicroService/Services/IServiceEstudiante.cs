@@ -7,7 +7,7 @@ namespace XavierSchoolMicroService.Services
     public interface IServiceEstudiante
     {
         IQueryable<object> GetAll();
-        object GetEstudiante(string id);
+        object GetEstudiante(string id, byte mode);
         bool SaveEstudiante(Estudiante estudiante, List<int> powerList);
         bool UpdateEstudiante(string id, Estudiante estudiante, List<int> powerList);
         IQueryable<object> GetPowersByEstudiante(string id);

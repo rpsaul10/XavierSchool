@@ -1,9 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Mvc;
-using XavierSchoolMicroService.Bussiness;
-using XavierSchoolMicroService.Services;
 
 namespace XavierSchoolMicroService.Utilities
 {
@@ -31,20 +27,6 @@ namespace XavierSchoolMicroService.Utilities
         public static string ConvertirTimeSpanToStringHora(TimeSpan? time)
         {
             return time == null ? null : time.Value.ToString(@"hh\:mm");
-        }
-
-        public static string GetId(ControllerBase controller)
-        {
-            var claimsIdentity = controller.User.Identity as ClaimsIdentity;
-            return claimsIdentity.FindFirst(ClaimTypes.SerialNumber)?.Value;
-        }
-
-        public static string GetMail(IServiceUsuarios service, ControllerBase controller)
-        {
-            var idUser = GetId(controller);
-            if (idUser == null)
-                return null;
-            return ((ServiceUsuarios) service).GetCorreoById(idUser);
         }
     }
 }

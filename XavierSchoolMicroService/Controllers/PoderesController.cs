@@ -1,13 +1,14 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using XavierSchoolMicroService.Utilities;
 using XavierSchoolMicroService.Services;
-using Microsoft.AspNetCore.Authorization;
+
 
 namespace XavierSchoolMicroService.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class PoderesController : ControllerBase
     {
         private readonly IServicePoderes _service;
@@ -26,7 +27,7 @@ namespace XavierSchoolMicroService.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetAllPoderes()
         {
-            _logger.LogInformation($"{Utils.GetMail(_userService, this)} -> Intentando obtener la lista de todos los poderes");
+            _logger.LogInformation($"User -> Intentando obtener la lista de todos los poderes");
             try
             {
                 var powers = _service.GetAll();
@@ -35,22 +36,20 @@ namespace XavierSchoolMicroService.Controllers
             }
             catch (System.Exception e)
             {
-                _logger.LogError(e, $"{Utils.GetMail(_userService, this)} -> Error durante la consulta de los poderes");
+                _logger.LogError(e, $"User -> Error durante la consulta de los poderes");
                 // Si algo sale mal se retornara la excepcion con un RequestCode 500
                 throw;
             }
         }
 
-        [HttpGet ("api/poderes/save")]
+        [HttpPost ("api/poderes/save")]
         [ProducesResponseType (StatusCodes.Status200OK)]
         [ProducesResponseType (StatusCodes.Status400BadRequest)]
         public IActionResult SavePoder([FromBody] string poder)
         {
             // var claimsIdentity = this.User.Identity as ClaimsIdentity;
             // var idUser = claimsIdentity.FindFirst(ClaimTypes.SerialNumber)?.Value;
-            if (!_userService.EsAdministrador(Utils.GetId(this)))
-                return Unauthorized("El usuario no es administrador");
-            _logger.LogInformation($"{Utils.GetMail(_userService, this)} -> Intentando guardar un nuevo poder {poder}");
+            _logger.LogInformation($"User -> Intentando guardar un nuevo poder {poder}");
             try
             {
                 // if (!_userService.EsAdministrador(idUser))
@@ -63,7 +62,7 @@ namespace XavierSchoolMicroService.Controllers
             {
                 // Si algo sale mal en la insercion caeremos aqui
                 // Se retorna la excepcion y un RequestCode de 500
-                _logger.LogError(e, $"{Utils.GetMail(_userService, this)} -> Un error ocurrio durante el registro del poder");
+                _logger.LogError(e, "User -> Un error ocurrio durante el registro del poder");
                 throw;
             }
         }
