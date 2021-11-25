@@ -1,24 +1,28 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using XavierSchoolMicroService.Models;
 using XavierSchoolMicroService.Services;
+using XavierSchoolMicroService.Utilities;
 
 namespace XavierSchoolMicroService.Controllers
 {
+    [Authorize]
     public class PresentacionesController : ControllerBase
     {
         private readonly IServicePresentaciones _service;
         private readonly ILogger<PresentacionesController> _logger;
+        private readonly IServiceUsuarios _userService;
 
-        public PresentacionesController(IServicePresentaciones service, ILogger<PresentacionesController> logger)
+        public PresentacionesController(IServicePresentaciones service, ILogger<PresentacionesController> logger, IServiceUsuarios userService)
         {
             _service = service;
             _logger = logger;
+            _userService = userService;
         }
 
         [HttpGet ("api/presentaciones/all")]
@@ -26,7 +30,7 @@ namespace XavierSchoolMicroService.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetAllPresentaciones()
         {
-            _logger.LogInformation($"User -> Intentando obtener la lista de las presentaciones");
+            _logger.LogInformation($"{Utils.GetMail(_userService, this)} -> Intentando obtener la lista de las presentaciones");
             try
             {
                 var pres = _service.GetAll();
@@ -35,7 +39,7 @@ namespace XavierSchoolMicroService.Controllers
             }
             catch (System.Exception e)
             {
-                _logger.LogError(e, $"User -> Error durante la consulta de las presentaciones");
+                _logger.LogError(e, $"{Utils.GetMail(_userService, this)} -> Error durante la consulta de las presentaciones");
                 // Si algo sale mal se retornara la excepcion con un RequestCode 500
                 throw;
             }
@@ -47,7 +51,7 @@ namespace XavierSchoolMicroService.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetPresentacion(string id)
         {
-            _logger.LogInformation($"User -> Intentando obtener los datos de una presentacion con id : {id}");
+            _logger.LogInformation($"{Utils.GetMail(_userService, this)} -> Intentando obtener los datos de una presentacion con id : {id}");
             try
             {
                 var pre = _service.GetPresentacion(id);
@@ -60,13 +64,13 @@ namespace XavierSchoolMicroService.Controllers
             }
             catch (CryptographicException ce)
             {
-                _logger.LogError(ce,$"User -> No se pudo decriptar el id insertado : {id}");
+                _logger.LogError(ce,$"{Utils.GetMail(_userService, this)} -> No se pudo decriptar el id insertado : {id}");
                 // Si cae en este catch significa que hubo algo mal en el id de entrada
                 // Se retorna un mensaje de error y un RequestCode de 400
                 return BadRequest("Entrada Invalida");
             } catch (InvalidOperationException fe)
             {
-                _logger.LogError(fe, "User -> Error por cadena demasiado corta");
+                _logger.LogError(fe, "{Utils.GetMail(_userService, this)} -> Error por cadena demasiado corta");
                 // Si cae en este catch significa que hubo algo mal en el id de entrada
                 // Se retorna un mensaje de error y un RequestCode de 400
                 return BadRequest("Entrada Invalida");
@@ -75,7 +79,7 @@ namespace XavierSchoolMicroService.Controllers
             {
                 // Si llegamos hasta aca significa que hubo un problema interno no esperado
                 // Se retorna la excepcion y un RequestCode de 500
-                _logger.LogError(e, "User -> Un error ocurrio durante la obtencion de la leccion privada");
+                _logger.LogError(e, $"{Utils.GetMail(_userService, this)} -> Un error ocurrio durante la obtencion de la leccion privada");
                 throw;
             }
         }
@@ -86,6 +90,8 @@ namespace XavierSchoolMicroService.Controllers
         public IActionResult SavePresentacion([FromBody] RequestBodyPresentacion req)
         {
             _logger.LogInformation($"Usuario -> Intentando registrar una nueva presentacion : {req.presentacion}");
+            if (!_userService.EsAdministrador(Utils.GetId(this)))
+                return Unauthorized("El usuario no es administrador");
             try
             {
                 var ret = _service.SavePresentacion(req.presentacion, req.estudiantes, req.profesores, req.hour);
@@ -96,7 +102,7 @@ namespace XavierSchoolMicroService.Controllers
             {
                 // Si algo sale mal en la insercion caeremos aqui
                 // Se retorna la excepcion y un RequestCode de 500
-                _logger.LogError(e, "User -> Un error ocurrio durante el registro de la leccion en grupo");
+                _logger.LogError(e, $"{Utils.GetMail(_userService, this)} -> Un error ocurrio durante el registro de la leccion en grupo");
                 throw;
             }
         }
@@ -106,7 +112,7 @@ namespace XavierSchoolMicroService.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetEstudiantesByIdPres(string id)
         {
-            _logger.LogInformation($"User -> Intentando obtener los estudiantes de una presentacion con el id : {id}");
+            _logger.LogInformation($"{Utils.GetMail(_userService, this)} -> Intentando obtener los estudiantes de una presentacion con el id : {id}");
             try
             {
                 var ests = _service.GetEstudiantesById(id);
@@ -118,7 +124,7 @@ namespace XavierSchoolMicroService.Controllers
             }
             catch (CryptographicException ce)
             {
-                _logger.LogError(ce,$"User -> No se pudo decriptar el id insertado : {id}");
+                _logger.LogError(ce,$"{Utils.GetMail(_userService, this)} -> No se pudo decriptar el id insertado : {id}");
                 // Si cae en este catch significa que hubo algo mal en el id de entrada
                 // Se retorna un mensaje de error y un RequestCode de 400
                 return BadRequest("Entrada Invalida");
@@ -127,7 +133,7 @@ namespace XavierSchoolMicroService.Controllers
             {
                 // Si llegamos hasta aca significa que hubo un problema interno no esperado
                 // Se retorna la excepcion y un RequestCode de 500
-                _logger.LogError(e, "User -> Un error ocurrio durante la obtencion los estudiantes de presentacion");
+                _logger.LogError(e, "{Utils.GetMail(_userService, this)} -> Un error ocurrio durante la obtencion los estudiantes de presentacion");
                 throw;
             }
         }
@@ -137,7 +143,7 @@ namespace XavierSchoolMicroService.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetProfesoresByIdPres(string id)
         {
-            _logger.LogInformation($"User -> Intentando obtener los profesores de una presentacion con el id : {id}");
+            _logger.LogInformation($"{Utils.GetMail(_userService, this)} -> Intentando obtener los profesores de una presentacion con el id : {id}");
             try
             {
                 var profesores = _service.GetProfesoresById(id);
@@ -149,7 +155,7 @@ namespace XavierSchoolMicroService.Controllers
             }
             catch (CryptographicException ce)
             {
-                _logger.LogError(ce,$"User -> No se pudo decriptar el id insertado : {id}");
+                _logger.LogError(ce,$"{Utils.GetMail(_userService, this)} -> No se pudo decriptar el id insertado : {id}");
                 // Si cae en este catch significa que hubo algo mal en el id de entrada
                 // Se retorna un mensaje de error y un RequestCode de 400
                 return BadRequest("Entrada Invalida");
@@ -158,7 +164,7 @@ namespace XavierSchoolMicroService.Controllers
             {
                 // Si llegamos hasta aca significa que hubo un problema interno no esperado
                 // Se retorna la excepcion y un RequestCode de 500
-                _logger.LogError(e, "User -> Un error ocurrio durante la obtencion los profesores de presentacion");
+                _logger.LogError(e, $"{Utils.GetMail(_userService, this)} -> Un error ocurrio durante la obtencion los profesores de presentacion");
                 throw;
             }
         }

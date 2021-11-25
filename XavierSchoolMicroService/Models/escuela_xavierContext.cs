@@ -17,6 +17,7 @@ namespace XavierSchoolMicroService.Models
         {
         }
 
+        public virtual DbSet<Dormitorio> Dormitorios { get; set; }
         public virtual DbSet<Estudiante> Estudiantes { get; set; }
         public virtual DbSet<LeccionesEstudiante> LeccionesEstudiantes { get; set; }
         public virtual DbSet<Leccionprivadum> Leccionprivada { get; set; }
@@ -41,12 +42,28 @@ namespace XavierSchoolMicroService.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Dormitorio>(entity =>
+            {
+                entity.HasKey(e => e.IdDormitorio)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("dormitorios");
+
+                entity.Property(e => e.IdDormitorio).HasColumnName("idDormitorio");
+
+                entity.Property(e => e.NumeroDpto).HasColumnName("numero_dpto");
+
+                entity.Property(e => e.Piso).HasColumnName("piso");
+            });
+
             modelBuilder.Entity<Estudiante>(entity =>
             {
                 entity.HasKey(e => e.IdEstudiante)
                     .HasName("PRIMARY");
 
                 entity.ToTable("estudiantes");
+
+                entity.HasIndex(e => e.FkDormitorioEst, "fk_dormitorio_idx");
 
                 entity.HasIndex(e => e.FkNivelpoderEst, "fk_nivelpoder_idx");
 
@@ -64,6 +81,8 @@ namespace XavierSchoolMicroService.Models
                     .HasColumnType("date")
                     .HasColumnName("fecha_nacimiento");
 
+                entity.Property(e => e.FkDormitorioEst).HasColumnName("fk_dormitorio_est");
+
                 entity.Property(e => e.FkNivelpoderEst).HasColumnName("fk_nivelpoder_est");
 
                 entity.Property(e => e.NombreEstudiante)
@@ -73,6 +92,11 @@ namespace XavierSchoolMicroService.Models
                 entity.Property(e => e.NssEstudiante)
                     .HasMaxLength(10)
                     .HasColumnName("nss_estudiante");
+
+                entity.HasOne(d => d.FkDormitorioEstNavigation)
+                    .WithMany(p => p.Estudiantes)
+                    .HasForeignKey(d => d.FkDormitorioEst)
+                    .HasConstraintName("idDormitorio");
 
                 entity.HasOne(d => d.FkNivelpoderEstNavigation)
                     .WithMany(p => p.Estudiantes)

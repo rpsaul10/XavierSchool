@@ -52,9 +52,10 @@ namespace XavierSchoolMicroService.Bussiness
                 var ests = from es in _context.Estudiantes
                         join es_tr in _context.PresentacionesEstudiantes on es.IdEstudiante equals es_tr.FkEstudiantePres
                         join niv in _context.Nivelpoders on es.FkNivelpoderEst equals niv.IdNivel
+                        join dor in _context.Dormitorios on es.FkDormitorioEst equals dor.IdDormitorio
                         where es_tr.FkPresentacionEst == int.Parse(idStr)
                         select new {
-                            Estudiante = ServiceEstudiante.CleanEstudianteData(es, niv, null),
+                            Estudiante = ServiceEstudiante.CleanEstudianteData(es, dor, niv, null),
                             EstadoPresentacion = es_tr.EstadoPresentacion
                         };
                 return ests;    

@@ -1,4 +1,3 @@
-using System.Configuration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -6,9 +5,11 @@ using XavierSchoolMicroService.Services;
 using XavierSchoolMicroService.Utilities;
 using XavierSchoolMicroService.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace XavierSchoolMicroService.Controllers
 {
+    [Authorize]
     public class UsuariosController : ControllerBase
     {
         private readonly IConfiguration _configuration;
@@ -49,7 +50,7 @@ namespace XavierSchoolMicroService.Controllers
         [ProducesResponseType (StatusCodes.Status400BadRequest)]
         public IActionResult GetAllUsuarios()
         {
-            _logger.LogInformation($"User -> Intentando otener la lista completa de los uuarios");
+            _logger.LogInformation($"{Utils.GetMail(_service, this)} -> Intentando otener la lista completa de los uuarios");
             try
             {
                 var users = _service.GetAll();
@@ -57,12 +58,12 @@ namespace XavierSchoolMicroService.Controllers
             }
             catch (System.Security.Cryptography.CryptographicException ce)
             {
-                _logger.LogInformation(ce, $"User -> Error en la encrisptacionde los ids de los ususarios");
+                _logger.LogInformation(ce, $"{Utils.GetMail(_service, this)} -> Error en la encrisptacionde los ids de los ususarios");
                 throw;
             }
             catch (System.Exception e)
             {
-                _logger.LogError(e, $"User -> Error durante la consulta de los usuarios");
+                _logger.LogError(e, $"{Utils.GetMail(_service, this)} -> Error durante la consulta de los usuarios");
                 throw;
             }
         }
@@ -72,7 +73,7 @@ namespace XavierSchoolMicroService.Controllers
         [ProducesResponseType (StatusCodes.Status400BadRequest)]
         public IActionResult SaveUsuarios([FromBody] Usuario usuario)
         {
-            _logger.LogInformation($"User -> Intentando registrar un nuevo usuario : {usuario}");
+            _logger.LogInformation($"{Utils.GetMail(_service, this)} -> Intentando registrar un nuevo usuario : {usuario}");
             try
             {
                 var resp = _service.SaveUsuario(usuario);
@@ -80,7 +81,7 @@ namespace XavierSchoolMicroService.Controllers
             }
             catch (System.Exception e)
             {
-                _logger.LogError(e, $"User -> Error al intentar registar el usuario");
+                _logger.LogError(e, $"{Utils.GetMail(_service, this)} -> Error al intentar registar el usuario");
                 throw;
             }
         }
@@ -88,9 +89,10 @@ namespace XavierSchoolMicroService.Controllers
         [HttpPost ("api/usuarios/autenticar")]
         [ProducesResponseType (StatusCodes.Status200OK)]
         [ProducesResponseType (StatusCodes.Status400BadRequest)]
+        [AllowAnonymous]
         public IActionResult AutenticarUsuario([FromBody] Usuario user)
         {
-            _logger.LogInformation($"User -> Intentando autenticar al usuario {user.Correo}");
+            _logger.LogInformation($"Anyone -> Intentando autenticar al usuario {user.Correo}");
             try
             {
                 var res = _service.AutenticarUsuario(user.Correo, user.Password);
@@ -101,14 +103,14 @@ namespace XavierSchoolMicroService.Controllers
             }
             catch (System.Exception e)
             {
-                _logger.LogError(e, $"User -> Error al intentar autenticar el usuario");
+                _logger.LogError(e, $"Anyone -> Error al intentar autenticar el usuario");
                 throw;
             }
         }
 
         public IActionResult DeleteUsuario(string id)
         {
-            _logger.LogInformation($"User -> Intentando eliminal al usuario con id : {id}");
+            _logger.LogInformation($"{Utils.GetMail(_service, this)} -> Intentando eliminal al usuario con id : {id}");
             try
             {
                 var res = _service.DeleteUsuario(id);
@@ -119,7 +121,7 @@ namespace XavierSchoolMicroService.Controllers
             }
             catch (System.Exception e)
             {
-                _logger.LogError(e, $"User -> Un error ocurrio al intentar eliminar al usuario");
+                _logger.LogError(e, $"{Utils.GetMail(_service, this)} -> Un error ocurrio al intentar eliminar al usuario");
                 throw;
             }
         }

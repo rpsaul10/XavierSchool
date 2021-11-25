@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Microsoft.AspNetCore.DataProtection;
 using XavierSchoolMicroService.Models;
 using XavierSchoolMicroService.Services;

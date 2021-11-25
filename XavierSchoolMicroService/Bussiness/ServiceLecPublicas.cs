@@ -31,8 +31,9 @@ namespace XavierSchoolMicroService.Bussiness
                 var estuds = from es in _context.Estudiantes
                             join es_le in _context.LeccionesEstudiantes on es.IdEstudiante equals es_le.FkEstudianteLec
                             join ni in _context.Nivelpoders on es.FkNivelpoderEst equals ni.IdNivel
+                            join dor in _context.Dormitorios on es.FkDormitorioEst equals dor.IdDormitorio
                             where es_le.FkLeccionEst == int.Parse(idStr)
-                            select ServiceEstudiante.CleanEstudianteData(es, ni, null);
+                            select ServiceEstudiante.CleanEstudianteData(es, dor, ni, null);
                 return estuds;
             } catch (CryptographicException ce)
             {

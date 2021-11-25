@@ -1,5 +1,4 @@
 using System.Linq;
-using XavierSchoolMicroService.Models;
 
 namespace XavierSchoolMicroService.Services
 {

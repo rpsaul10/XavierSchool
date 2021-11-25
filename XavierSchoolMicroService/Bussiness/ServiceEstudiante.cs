@@ -29,8 +29,9 @@ namespace XavierSchoolMicroService.Bussiness
             {
                 _logger.LogInformation("Obteniendo la lista de todos los estudiantes");
                 var estuds = from est in _context.Estudiantes
+                            join dorm in _context.Dormitorios on est.FkDormitorioEst equals dorm.IdDormitorio
                             join niv in _context.Nivelpoders on est.FkNivelpoderEst equals niv.IdNivel
-                            select CleanEstudianteData(est, niv, _protector);
+                            select CleanEstudianteData(est, dorm, niv, _protector);
                 return estuds;
             } catch (System.Security.Cryptography.CryptographicException ce)
             {
@@ -44,26 +45,17 @@ namespace XavierSchoolMicroService.Bussiness
             }
         }
 
-        public object GetEstudiante(string id, byte mode)
+        public object GetEstudiante(string id)
         {
             try 
             {
                 var idStr = id.Length > Utils.LENT ? _protector.Unprotect(id) : id;
                 _logger.LogInformation($"Obteniendo la informacion del estudiante con Id: {idStr}");
-                if (mode == 0)
-                {
-                    return _context.Estudiantes.Where(e => e.IdEstudiante == int.Parse(idStr)).Select(e => new {
-                        NombreEstudiante= e.NombreEstudiante,
-                        ApellidoEstudiante = e.ApellidoEstudiante,
-                        FkNivelpoderEst = e.FkNivelpoderEst,
-                        ActivoOInactivo = e.ActivoOInactivo,
-                        FechaNacimiento = e.FechaNacimiento
-                    }).FirstOrDefault();
-                }
                 var estu = from est in _context.Estudiantes
+                        join dorm in _context.Dormitorios on est.FkDormitorioEst equals dorm.IdDormitorio
                         join niv in _context.Nivelpoders on est.FkNivelpoderEst equals niv.IdNivel
                         where est.IdEstudiante == int.Parse(idStr)
-                        select CleanEstudianteData(est, niv, _protector);
+                        select CleanEstudianteData(est, dorm, niv, _protector);
 
                 if (estu.Count() == 0)
                     return null;
@@ -103,7 +95,6 @@ namespace XavierSchoolMicroService.Bussiness
                         FkPoderEst = powe
                     });
                 }
-
                 _context.SaveChanges();
                 transaction.Commit();
                 return true; 
@@ -130,6 +121,7 @@ namespace XavierSchoolMicroService.Bussiness
                     if (!oldDataEst.NombreEstudiante.Equals(estudiante.NombreEstudiante)) oldDataEst.NombreEstudiante = estudiante.NombreEstudiante;
                     if (!oldDataEst.ApellidoEstudiante.Equals(estudiante.ApellidoEstudiante)) oldDataEst.ApellidoEstudiante = estudiante.ApellidoEstudiante;
                     if (!oldDataEst.FechaNacimiento.Equals(estudiante.FechaNacimiento)) oldDataEst.FechaNacimiento = estudiante.FechaNacimiento;
+                    if (oldDataEst.FkDormitorioEst != estudiante.FkDormitorioEst) oldDataEst.FkDormitorioEst = estudiante.FkDormitorioEst;
                     if (oldDataEst.ActivoOInactivo != estudiante.ActivoOInactivo) oldDataEst.ActivoOInactivo = estudiante.ActivoOInactivo;
                     if (oldDataEst.FkNivelpoderEst != estudiante.FkNivelpoderEst) oldDataEst.FkNivelpoderEst = estudiante.FkNivelpoderEst;
                     if (!oldDataEst.NssEstudiante.Equals(estudiante.NssEstudiante)) oldDataEst.NombreEstudiante = estudiante.NssEstudiante;
@@ -175,7 +167,7 @@ namespace XavierSchoolMicroService.Bussiness
             }
         }
 
-        public static object CleanEstudianteData(Estudiante est, Nivelpoder niv, IDataProtector prot)
+        public static object CleanEstudianteData(Estudiante est, Dormitorio dorm, Nivelpoder niv, IDataProtector prot)
         {
             string idProtect = null;
             if (prot != null)
@@ -187,6 +179,7 @@ namespace XavierSchoolMicroService.Bussiness
                         NombreEstudiante = est.NombreEstudiante,
                         ApellidoEstudiante = est.ApellidoEstudiante,
                         FechaNacimiento = est.FechaNacimiento,
+                        DormitorioEst =  Utils.BuildDicDormitorio(dorm.NumeroDpto, dorm.Piso),
                         NssEstudiante = est.NssEstudiante,
                         ActivoOInactivo = est.ActivoOInactivo,
                         Nivelpoder = niv.NombreNivel
@@ -318,21 +311,6 @@ namespace XavierSchoolMicroService.Bussiness
             catch (System.Exception e)
             {
                 _logger.LogError(e, "Error al intentar obtener las presentaciones a las que asistio el estudiante");
-                throw;
-            }
-        }
-
-        public IQueryable<object> GetNiveles()
-        {
-            try
-            {
-                return _context.Nivelpoders.Select(n => new {
-                    IdNivel = n.IdNivel,
-                    NombreNivel = n.NombreNivel
-                });  
-            }
-            catch (System.Exception)
-            {
                 throw;
             }
         }
