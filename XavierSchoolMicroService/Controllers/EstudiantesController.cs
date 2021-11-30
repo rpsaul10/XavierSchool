@@ -4,15 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using XavierSchoolMicroService.Models;
 using XavierSchoolMicroService.Services;
-using XavierSchoolMicroService.Utilities;
 
 namespace XavierSchoolMicroService.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class EstudiantesController : ControllerBase
     {
         private readonly IServiceEstudiante _service;

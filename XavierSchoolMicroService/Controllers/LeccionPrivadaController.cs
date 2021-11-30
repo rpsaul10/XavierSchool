@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using XavierSchoolMicroService.Services;
 
 namespace XavierSchoolMicroService.Controllers
 {
+    [Authorize]
     public class LeccionPrivadaController : ControllerBase
     {
         private readonly IServiceLecPrivadas _service;

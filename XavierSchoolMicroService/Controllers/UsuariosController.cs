@@ -6,9 +6,11 @@ using XavierSchoolMicroService.Services;
 using XavierSchoolMicroService.Utilities;
 using XavierSchoolMicroService.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace XavierSchoolMicroService.Controllers
 {
+    [Authorize]
     public class UsuariosController : ControllerBase
     {
         private readonly IConfiguration _configuration;
