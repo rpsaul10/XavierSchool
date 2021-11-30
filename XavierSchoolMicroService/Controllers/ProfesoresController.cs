@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,7 @@ using XavierSchoolMicroService.Services;
 
 namespace XavierSchoolMicroService.Controllers
 {
+    [Authorize]
     public class ProfesoresController : ControllerBase
     {
         private readonly IServiceProfesores _service;

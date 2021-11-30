@@ -1,15 +1,16 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using XavierSchoolMicroService.Models;
 using XavierSchoolMicroService.Services;
 
 namespace XavierSchoolMicroService.Controllers
 {
+    [Authorize]
     public class PresentacionesController : ControllerBase
     {
         private readonly IServicePresentaciones _service;

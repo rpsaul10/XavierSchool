@@ -8,7 +8,7 @@ using XavierSchoolMicroService.Services;
 
 namespace XavierSchoolMicroService.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class PoderesController : ControllerBase
     {
         private readonly IServicePoderes _service;

@@ -57,7 +57,8 @@ namespace XavierSchoolMicroService.Bussiness
                         ApellidoEstudiante = e.ApellidoEstudiante,
                         FkNivelpoderEst = e.FkNivelpoderEst,
                         ActivoOInactivo = e.ActivoOInactivo,
-                        FechaNacimiento = e.FechaNacimiento
+                        FechaNacimiento = e.FechaNacimiento,
+                        nssEst = e.NssEstudiante
                     }).FirstOrDefault();
                 }
                 var estu = from est in _context.Estudiantes
