@@ -168,8 +168,8 @@ namespace XavierSchoolMicroService.Controllers
     public class RequestBodyPresentacion
     {
         public Presentacione presentacion { get; set; }
-        public List<int[]> estudiantes { get; set; }
-        public List<int> profesores { get; set; }
+        public List<string[]> estudiantes { get; set; }
+        public List<string> profesores { get; set; }
         public string hour { get; set; }
     }
 }

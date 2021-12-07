@@ -14,12 +14,18 @@ namespace XavierSchoolMicroService.Bussiness
     {
         private readonly escuela_xavierContext _context;
         private const string PURPOSE = "LeccionesPublicasProtection";
+        private const string PURPOSE_EST = "EstudiantesProtection";
+        private const string PROPUSE_PROF = "ProfesoresProtection";
         private readonly IDataProtector _protector;
+        private readonly IDataProtector _protector_est;
+        private readonly IDataProtector _protector_prof;
         private readonly ILogger<ServiceLecPrivadas> _logger;
         public ServiceLecPublicas(escuela_xavierContext context, IDataProtectionProvider provider, ILogger<ServiceLecPrivadas> logger)
         {
             _logger = logger;
             _protector = provider.CreateProtector(PURPOSE);
+            _protector_est = provider.CreateProtector(PURPOSE_EST);
+            _protector_prof = provider.CreateProtector(PROPUSE_PROF);
             _context = context;
         }
         public IQueryable<object> EtudiantesPorLeccion(string id)
@@ -116,7 +122,7 @@ namespace XavierSchoolMicroService.Bussiness
                     };
         }
 
-        public bool SaveLeccPublica(Leccionpublica lec, List<int> estuds, string hour)
+        public bool SaveLeccPublica(Leccionpublica lec, List<string> estuds, string hour, string idProf)
         {
             var transaction = _context.Database.BeginTransaction();
 
@@ -124,6 +130,7 @@ namespace XavierSchoolMicroService.Bussiness
             {
                 _logger.LogInformation($"Registrando la informacion de la leccion en grupo : {lec} hour: {lec}");
                 lec.HoraLeccionpub = Utils.ConvertirHoraToTimeSpan(hour);
+                lec.FkProfesorLpub = int.Parse(idProf.Length > Utils.LENT ? _protector_prof.Unprotect(idProf) : idProf);
                 _context.Leccionpublicas.Add(lec);
                 _context.SaveChanges();
                 var recent = _context.Leccionpublicas.OrderBy(l => l.IdLeccionpub).LastOrDefault();
@@ -132,7 +139,7 @@ namespace XavierSchoolMicroService.Bussiness
                 {
                     _context.LeccionesEstudiantes.Add( new LeccionesEstudiante
                     {
-                        FkEstudianteLec = id,
+                        FkEstudianteLec = int.Parse(id.Length > Utils.LENT ? _protector_est.Unprotect(id) : id),
                         FkLeccionEst = recent.IdLeccionpub
                     });
                 }

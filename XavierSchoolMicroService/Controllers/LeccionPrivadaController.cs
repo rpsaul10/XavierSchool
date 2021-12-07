@@ -92,7 +92,7 @@ namespace XavierSchoolMicroService.Controllers
             _logger.LogInformation($"Usuario -> Intentando registrar una nueva leccion privada : {requestBodyPriv.leccion}");
             try
             {
-                var res = _service.SaveLeccPrivada(requestBodyPriv.leccion, requestBodyPriv.hora);
+                var res = _service.SaveLeccPrivada(requestBodyPriv.leccion, requestBodyPriv.hora, requestBodyPriv.idProf, requestBodyPriv.idEst);
                 // Si todo sale bien se retorna true y un RequestCode 200
                 return Ok (res);
             }
@@ -109,6 +109,8 @@ namespace XavierSchoolMicroService.Controllers
         {
             public Leccionprivadum leccion { get; set; }
             public string hora { get; set; }
+            public string idProf { get; set; }
+            public string idEst { get; set; }
         }
     }
 }

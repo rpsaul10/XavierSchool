@@ -14,12 +14,18 @@ namespace XavierSchoolMicroService.Bussiness
         private readonly escuela_xavierContext _context;
         private readonly IDataProtector _protector;
         private const string PURPOSE = "LeccionesPrivadasProtection";
+        private const string PURPUSE_EST = "EstudiantesProtection";
+        private const string PROPUSE_PROF = "ProfesoresProtection";
+        private readonly IDataProtector _protector_est;
+        private readonly IDataProtector _protector_prof;
         private readonly ILogger<ServiceLecPrivadas> _logger;
         public ServiceLecPrivadas(escuela_xavierContext context, IDataProtectionProvider provider, ILogger<ServiceLecPrivadas> logger)
         {
             _logger = logger;
             _context = context;
+            _protector_est = provider.CreateProtector(PURPUSE_EST);
             _protector = provider.CreateProtector(PURPOSE);
+            _protector_prof = provider.CreateProtector(PROPUSE_PROF);
         }
         public IQueryable<object> GetAll()
         {
@@ -74,11 +80,13 @@ namespace XavierSchoolMicroService.Bussiness
             }
         }
 
-        public bool SaveLeccPrivada(Leccionprivadum lec, string hour)
+        public bool SaveLeccPrivada(Leccionprivadum lec, string hour, string idProf, string idEst)
         {
             try
             {
                 _logger.LogInformation($"Registrando la informacion de la leccion privada : {lec} hour: {hour}");
+                lec.FkProfesorLpriv = int.Parse(idProf.Length > Utils.LENT ? _protector_prof.Unprotect(idProf) : idProf);
+                lec.FkEstudianteLpriv = int.Parse(idEst.Length > Utils.LENT ? _protector_est.Unprotect(idEst) : idEst);
                 lec.HoraLeccionpriv = Utilities.Utils.ConvertirHoraToTimeSpan(hour);
                 _context.Leccionprivada.Add(lec);
                 _context.SaveChanges();

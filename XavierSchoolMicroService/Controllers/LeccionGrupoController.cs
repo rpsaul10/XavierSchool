@@ -89,7 +89,7 @@ namespace XavierSchoolMicroService.Controllers
             _logger.LogInformation($"Usuario -> Intentando registrar una nueva leccion en grupo : {c.lec}");
             try
             {
-                var res = _service.SaveLeccPublica(c.lec, c.est, c.hour);
+                var res = _service.SaveLeccPublica(c.lec, c.est, c.hour, c.idProf);
                 // Si todo sale bien se retorna true y un RequestCode 200
                 return Ok (res);  
             }
@@ -138,7 +138,8 @@ namespace XavierSchoolMicroService.Controllers
     public class RequestBodyPublic
     {
         public Leccionpublica lec { get; set; }
-        public List<int> est { get; set; }
+        public List<string> est { get; set; }
         public string hour { get; set; }
+        public string idProf { get; set; }
     }
 }

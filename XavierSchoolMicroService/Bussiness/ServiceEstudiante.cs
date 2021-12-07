@@ -133,7 +133,7 @@ namespace XavierSchoolMicroService.Bussiness
                     if (!oldDataEst.FechaNacimiento.Equals(estudiante.FechaNacimiento)) oldDataEst.FechaNacimiento = estudiante.FechaNacimiento;
                     if (oldDataEst.ActivoOInactivo != estudiante.ActivoOInactivo) oldDataEst.ActivoOInactivo = estudiante.ActivoOInactivo;
                     if (oldDataEst.FkNivelpoderEst != estudiante.FkNivelpoderEst) oldDataEst.FkNivelpoderEst = estudiante.FkNivelpoderEst;
-                    if (!oldDataEst.NssEstudiante.Equals(estudiante.NssEstudiante)) oldDataEst.NombreEstudiante = estudiante.NssEstudiante;
+                    if (!oldDataEst.NssEstudiante.Equals(estudiante.NssEstudiante)) oldDataEst.NssEstudiante = estudiante.NssEstudiante;
 
                     var powers = _context.PoderesEstudiantes.Where(pe => pe.FkEstudiantePod == int.Parse(idStr));
                     powerList.Sort();

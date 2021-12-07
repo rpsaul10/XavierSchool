@@ -7,6 +7,6 @@ namespace XavierSchoolMicroService.Services
     {
         IQueryable<object> GetAll();
         object GetLeccionPrivada(string id);
-        bool SaveLeccPrivada(Leccionprivadum lec, string hour); 
+        bool SaveLeccPrivada(Leccionprivadum lec, string hour, string idProf, string idEst); 
     }
 }

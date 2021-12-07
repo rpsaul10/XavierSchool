@@ -72,6 +72,7 @@ namespace XavierSchoolMicroService.Controllers
         [HttpPost ("api/usuarios/save")]
         [ProducesResponseType (StatusCodes.Status200OK)]
         [ProducesResponseType (StatusCodes.Status400BadRequest)]
+        [AllowAnonymous]
         public IActionResult SaveUsuarios([FromBody] Usuario usuario)
         {
             _logger.LogInformation($"User -> Intentando registrar un nuevo usuario : {usuario}");
@@ -90,6 +91,7 @@ namespace XavierSchoolMicroService.Controllers
         [HttpPost ("api/usuarios/autenticar")]
         [ProducesResponseType (StatusCodes.Status200OK)]
         [ProducesResponseType (StatusCodes.Status400BadRequest)]
+        [AllowAnonymous]
         public IActionResult AutenticarUsuario([FromBody] Usuario user)
         {
             _logger.LogInformation($"User -> Intentando autenticar al usuario {user.Correo}");

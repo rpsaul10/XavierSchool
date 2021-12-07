@@ -15,6 +15,10 @@ namespace XavierSchoolMicroService.Bussiness
         private readonly escuela_xavierContext _context;
         private const string PURPOSE = "PresentacionesProtection";
         private readonly IDataProtector _protector;
+        private const string PURPUSE_EST = "EstudiantesProtection";
+        private const string PROPUSE_PROF = "ProfesoresProtection";
+        private readonly IDataProtector _protector_est;
+        private readonly IDataProtector _protector_prof;
         private readonly ILogger<ServicePresentaciones> _logger;
 
         public ServicePresentaciones(escuela_xavierContext context, IDataProtectionProvider provider, ILogger<ServicePresentaciones> logger)
@@ -22,6 +26,8 @@ namespace XavierSchoolMicroService.Bussiness
             _logger = logger;
             _context = context;
             _protector = provider.CreateProtector(PURPOSE);
+            _protector_est = provider.CreateProtector(PURPUSE_EST);
+            _protector_prof = provider.CreateProtector(PROPUSE_PROF);
         }
 
         public IQueryable<object> GetAll()
@@ -127,7 +133,7 @@ namespace XavierSchoolMicroService.Bussiness
             }
         }
 
-        public bool SavePresentacion(Presentacione presentacion, List<int[]> idEstus, List<int> idProfs, string hora)
+        public bool SavePresentacion(Presentacione presentacion, List<string[]> idEstus, List<string> idProfs, string hora)
         {
             var transaction = _context.Database.BeginTransaction();
             try
@@ -141,8 +147,8 @@ namespace XavierSchoolMicroService.Bussiness
                 foreach (var item in idEstus)
                 {
                     _context.PresentacionesEstudiantes.Add(new PresentacionesEstudiante {
-                        FkEstudiantePres = item[0],
-                        EstadoPresentacion = (byte) item[1],
+                        FkEstudiantePres = int.Parse(item[0].Length > Utils.LENT ? _protector_est.Unprotect(item[0]) : item[0]),
+                        EstadoPresentacion = byte.Parse(item[1]),
                         FkPresentacionEst = lastInput.IdPresentacion
                     });
                 }
@@ -151,7 +157,7 @@ namespace XavierSchoolMicroService.Bussiness
                 {
                     _context.PresentacionesProfesores.Add(new PresentacionesProfesore {
                         FkPresentacionPres = lastInput.IdPresentacion,
-                        FkProfesorPres = item
+                        FkProfesorPres = int.Parse(item.Length > Utils.LENT ? _protector_prof.Unprotect(item) : item)
                     });
                 }
 
