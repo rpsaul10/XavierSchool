@@ -258,7 +258,6 @@ namespace XavierSchoolMicroService.Bussiness
             {
                 throw;
             }
-            throw new NotImplementedException();
         }
 
         public string GetCorreoById(string id)

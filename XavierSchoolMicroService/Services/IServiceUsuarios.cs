@@ -12,6 +12,6 @@ namespace XavierSchoolMicroService.Services
         bool UpdateUsuario(Usuario usuario, string id);
         bool DeleteUsuario(string id);
         object AutenticarUsuario(string mail, string password);
-        //bool EsAdministrador(string id);
+        bool EsAdministrador(string id);
     }
 }

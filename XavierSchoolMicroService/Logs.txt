@@ -1,814 +1,181 @@
-2021-12-07 01:58:45.295 -06:00 [INF] User profile is available. Using 'C:\Users\rpsau\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
-2021-12-07 01:58:45.439 -06:00 [INF] Creating key {30fe4ef0-39c6-4b36-9cfd-c7b2248602c4} with creation date 2021-12-07 07:58:45Z, activation date 2021-12-08 18:36:38Z, and expiration date 2021-12-21 07:58:45Z.
-2021-12-07 01:58:45.458 -06:00 [INF] Writing data to file 'C:\Users\rpsau\AppData\Local\ASP.NET\DataProtection-Keys\key-30fe4ef0-39c6-4b36-9cfd-c7b2248602c4.xml'.
-2021-12-07 01:58:46.319 -06:00 [INF] Now listening on: http://localhost:5000
-2021-12-07 01:58:46.321 -06:00 [INF] Application started. Press Ctrl+C to shut down.
-2021-12-07 01:58:46.323 -06:00 [INF] Hosting environment: Development
-2021-12-07 01:58:46.325 -06:00 [INF] Content root path: D:\Downloads\Pliss\XavierSchool\XavierSchoolMicroService
-2021-12-07 01:58:53.464 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/lecGrupo/save application/json 153
-2021-12-07 01:58:53.821 -06:00 [INF] Failed to validate the token.
-Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
-   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
-   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
-   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
-   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
-   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
-2021-12-07 01:58:53.932 -06:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
-2021-12-07 01:58:53.939 -06:00 [INF] Authorization failed. These requirements were not met:
-DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
-2021-12-07 01:58:53.948 -06:00 [INF] AuthenticationScheme: Bearer was challenged.
-2021-12-07 01:58:53.987 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/lecGrupo/save application/json 153 - 401 0 - 525.6697ms
-2021-12-07 01:59:00.097 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/usuarios/autenticar application/json 71
-2021-12-07 01:59:00.104 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.UsuariosController.AutenticarUsuario (XavierSchoolMicroService)'
-2021-12-07 01:59:00.125 -06:00 [INF] Route matched with {action = "AutenticarUsuario", controller = "Usuarios"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AutenticarUsuario(XavierSchoolMicroService.Models.Usuario) on controller XavierSchoolMicroService.Controllers.UsuariosController (XavierSchoolMicroService).
-2021-12-07 01:59:02.146 -06:00 [INF] User -> Intentando autenticar al usuario charlyXavier@outlook.com
-2021-12-07 01:59:02.179 -06:00 [INF] Auntenticando usuario con mail : charlyXavier@outlook.com
-2021-12-07 01:59:02.660 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 01:59:03.379 -06:00 [INF] Executed DbCommand (32ms) [Parameters=[@__mail_0='?' (Size = 65)], CommandType='"Text"', CommandTimeout='30']
+2021-12-07 16:04:12.763 -06:00 [INF] User profile is available. Using 'C:\Users\rpsau\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-12-07 16:04:13.033 -06:00 [INF] Now listening on: http://localhost:5000
+2021-12-07 16:04:13.038 -06:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-12-07 16:04:13.042 -06:00 [INF] Hosting environment: Development
+2021-12-07 16:04:13.048 -06:00 [INF] Content root path: D:\Downloads\Pliss\XavierSchool\XavierSchoolMicroService
+2021-12-07 16:04:42.969 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/estudiantes/poderes/4 - -
+2021-12-07 16:04:43.488 -06:00 [INF] Successfully validated the token.
+2021-12-07 16:04:43.505 -06:00 [INF] Authorization was successful.
+2021-12-07 16:04:43.509 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.EstudiantesController.GetPowersByEstudiante (XavierSchoolMicroService)'
+2021-12-07 16:04:43.583 -06:00 [INF] Route matched with {action = "GetPowersByEstudiante", controller = "Estudiantes"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetPowersByEstudiante(System.String) on controller XavierSchoolMicroService.Controllers.EstudiantesController (XavierSchoolMicroService).
+2021-12-07 16:04:45.679 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
+2021-12-07 16:04:46.882 -06:00 [INF] Executed DbCommand (21ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`correo`
+FROM `usuarios` AS `u`
+WHERE `u`.`idUsuario` = @__Parse_0
+LIMIT 1
+2021-12-07 16:04:46.910 -06:00 [INF] charlyXavier@outlook.com Intentando obtener los poderes del estudiante con id 4
+2021-12-07 16:04:46.916 -06:00 [INF] Intentando obtener los poderes del estudiante con id: 4
+2021-12-07 16:04:47.154 -06:00 [INF] Executed DbCommand (41ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`idPoder`, `p`.`nombre_poder`
+FROM `poderes` AS `p`
+INNER JOIN `poderes_estudiantes` AS `p0` ON `p`.`idPoder` = `p0`.`fk_poder_est`
+WHERE `p0`.`fk_estudiante_pod` = @__Parse_0
+2021-12-07 16:04:47.286 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2021-12-07 16:04:47.368 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.EstudiantesController.GetPowersByEstudiante (XavierSchoolMicroService) in 3765.5794ms
+2021-12-07 16:04:47.376 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.EstudiantesController.GetPowersByEstudiante (XavierSchoolMicroService)'
+2021-12-07 16:04:47.391 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/estudiantes/poderes/4 - - - 200 - application/json;+charset=utf-8 4427.6888ms
+2021-12-07 16:05:09.366 -06:00 [INF] Application is shutting down...
+2021-12-07 16:35:57.981 -06:00 [INF] User profile is available. Using 'C:\Users\rpsau\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-12-07 16:35:58.315 -06:00 [INF] Now listening on: http://localhost:5000
+2021-12-07 16:35:58.319 -06:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-12-07 16:35:58.322 -06:00 [INF] Hosting environment: Development
+2021-12-07 16:35:58.326 -06:00 [INF] Content root path: D:\Downloads\Pliss\XavierSchool\XavierSchoolMicroService
+2021-12-07 16:36:17.680 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/profesores/presentaciones/1 - -
+2021-12-07 16:36:18.110 -06:00 [INF] Successfully validated the token.
+2021-12-07 16:36:18.121 -06:00 [INF] Authorization was successful.
+2021-12-07 16:36:18.125 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.ProfesoresController.GetPresentacionesByIdProf (XavierSchoolMicroService)'
+2021-12-07 16:36:18.177 -06:00 [INF] Route matched with {action = "GetPresentacionesByIdProf", controller = "Profesores"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetPresentacionesByIdProf(System.String) on controller XavierSchoolMicroService.Controllers.ProfesoresController (XavierSchoolMicroService).
+2021-12-07 16:36:19.457 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
+2021-12-07 16:36:20.152 -06:00 [INF] Executed DbCommand (13ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`correo`
+FROM `usuarios` AS `u`
+WHERE `u`.`idUsuario` = @__Parse_0
+LIMIT 1
+2021-12-07 16:36:20.177 -06:00 [INF] charlyXavier@outlook.com -> Intentando obtener las presentaciones a las que asistio el profesor con : 1
+2021-12-07 16:36:20.183 -06:00 [INF] Obteniendo las presentaciones a las que asistio el profesor con id : 1
+2021-12-07 16:36:20.345 -06:00 [INF] Executed DbCommand (6ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`idPresentacion`, `p`.`fecha_presentacion`, `p`.`hora_presentacion`, `p`.`nombre_presentacion`
+FROM `presentaciones` AS `p`
+INNER JOIN `presentaciones_profesores` AS `p0` ON `p`.`idPresentacion` = `p0`.`fk_presentacion_pres`
+WHERE `p0`.`fk_profesor_pres` = @__Parse_0
+2021-12-07 16:36:20.485 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2021-12-07 16:36:20.543 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.ProfesoresController.GetPresentacionesByIdProf (XavierSchoolMicroService) in 2348.4448ms
+2021-12-07 16:36:20.549 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.ProfesoresController.GetPresentacionesByIdProf (XavierSchoolMicroService)'
+2021-12-07 16:36:20.558 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/profesores/presentaciones/1 - - - 200 - application/json;+charset=utf-8 2883.2919ms
+2021-12-07 16:46:55.722 -06:00 [INF] Application is shutting down...
+2021-12-07 16:47:20.684 -06:00 [INF] User profile is available. Using 'C:\Users\rpsau\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-12-07 16:47:20.971 -06:00 [INF] Now listening on: http://localhost:5000
+2021-12-07 16:47:20.976 -06:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-12-07 16:47:20.978 -06:00 [INF] Hosting environment: Development
+2021-12-07 16:47:20.979 -06:00 [INF] Content root path: D:\Downloads\Pliss\XavierSchool\XavierSchoolMicroService
+2021-12-07 16:48:30.238 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/profesores/update/7 application/json 170
+2021-12-07 16:48:30.628 -06:00 [INF] Successfully validated the token.
+2021-12-07 16:48:30.639 -06:00 [INF] Authorization was successful.
+2021-12-07 16:48:30.642 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.ProfesoresController.UpdateProfesor (XavierSchoolMicroService)'
+2021-12-07 16:48:30.688 -06:00 [INF] Route matched with {action = "UpdateProfesor", controller = "Profesores"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult UpdateProfesor(XavierSchoolMicroService.Models.Profesore, System.String) on controller XavierSchoolMicroService.Controllers.ProfesoresController (XavierSchoolMicroService).
+2021-12-07 16:48:32.289 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
+2021-12-07 16:48:33.204 -06:00 [INF] Executed DbCommand (22ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`correo`
+FROM `usuarios` AS `u`
+WHERE `u`.`idUsuario` = @__Parse_0
+LIMIT 1
+2021-12-07 16:48:33.225 -06:00 [INF] charlyXavier@outlook.com -> Intentando registrar un nuevo maestro XavierSchoolMicroService.Models.Profesore
+2021-12-07 16:48:33.251 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`estadoAdministrador`
+FROM `usuarios` AS `u`
+WHERE `u`.`idUsuario` = @__Parse_0
+LIMIT 1
+2021-12-07 16:48:33.264 -06:00 [INF] Actualizando la informacion del profesor con id : 7
+2021-12-07 16:48:33.319 -06:00 [INF] Executed DbCommand (2ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
+FROM `profesores` AS `p`
+WHERE `p`.`idProfesor` = @__Parse_0
+LIMIT 1
+2021-12-07 16:48:33.637 -06:00 [INF] Executed DbCommand (6ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = SByte)], CommandType='"Text"', CommandTimeout='30']
+UPDATE `profesores` SET `activo_o_inactivo` = @p0
+WHERE `idProfesor` = @p1;
+SELECT ROW_COUNT();
+2021-12-07 16:48:33.686 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Boolean'.
+2021-12-07 16:48:33.710 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.ProfesoresController.UpdateProfesor (XavierSchoolMicroService) in 3010.5514ms
+2021-12-07 16:48:33.715 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.ProfesoresController.UpdateProfesor (XavierSchoolMicroService)'
+2021-12-07 16:48:33.727 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/profesores/update/7 application/json 170 - 200 - application/json;+charset=utf-8 3493.8348ms
+2021-12-07 16:48:39.478 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/profesores/all - -
+2021-12-07 16:48:39.489 -06:00 [INF] Successfully validated the token.
+2021-12-07 16:48:39.492 -06:00 [INF] Authorization was successful.
+2021-12-07 16:48:39.494 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.ProfesoresController.GetAllProfesores (XavierSchoolMicroService)'
+2021-12-07 16:48:39.502 -06:00 [INF] Route matched with {action = "GetAllProfesores", controller = "Profesores"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllProfesores() on controller XavierSchoolMicroService.Controllers.ProfesoresController (XavierSchoolMicroService).
+2021-12-07 16:48:39.563 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
+2021-12-07 16:48:39.577 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`correo`
+FROM `usuarios` AS `u`
+WHERE `u`.`idUsuario` = @__Parse_0
+LIMIT 1
+2021-12-07 16:48:39.589 -06:00 [INF] charlyXavier@outlook.com -> Intentando obtener la lista de las profesores
+2021-12-07 16:48:39.591 -06:00 [INF] Obteniendo la lista completa de profesores.
+2021-12-07 16:48:39.660 -06:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
+FROM `profesores` AS `p`
+2021-12-07 16:48:39.680 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2021-12-07 16:48:39.713 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.ProfesoresController.GetAllProfesores (XavierSchoolMicroService) in 202.4998ms
+2021-12-07 16:48:39.721 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.ProfesoresController.GetAllProfesores (XavierSchoolMicroService)'
+2021-12-07 16:48:39.726 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/profesores/all - - - 200 - application/json;+charset=utf-8 247.0439ms
+2021-12-07 16:49:03.571 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/usuarios/autenticar application/json 64
+2021-12-07 16:49:03.578 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.UsuariosController.AutenticarUsuario (XavierSchoolMicroService)'
+2021-12-07 16:49:03.583 -06:00 [INF] Route matched with {action = "AutenticarUsuario", controller = "Usuarios"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AutenticarUsuario(XavierSchoolMicroService.Models.Usuario) on controller XavierSchoolMicroService.Controllers.UsuariosController (XavierSchoolMicroService).
+2021-12-07 16:49:03.599 -06:00 [INF] Anonimo -> Intentando autenticar al usuario magnum@outlook.com
+2021-12-07 16:49:03.603 -06:00 [INF] Auntenticando usuario con mail : magnum@outlook.com
+2021-12-07 16:49:03.619 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
+2021-12-07 16:49:03.641 -06:00 [INF] Executed DbCommand (5ms) [Parameters=[@__mail_0='?' (Size = 65)], CommandType='"Text"', CommandTimeout='30']
 SELECT `u`.`idUsuario`, `u`.`apellido_usuario`, `u`.`correo`, `u`.`estadoAdministrador`, `u`.`nombre_usuario`, `u`.`password`
 FROM `usuarios` AS `u`
 WHERE `u`.`correo` = @__mail_0
 LIMIT 1
-2021-12-07 01:59:03.520 -06:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType25`5[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Byte, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 01:59:03.544 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.UsuariosController.AutenticarUsuario (XavierSchoolMicroService) in 3410.4675ms
-2021-12-07 01:59:03.547 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.UsuariosController.AutenticarUsuario (XavierSchoolMicroService)'
-2021-12-07 01:59:03.551 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/usuarios/autenticar application/json 71 - 200 - application/json;+charset=utf-8 3453.9797ms
-2021-12-07 01:59:57.400 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/lecGrupo/save application/json 153
-2021-12-07 01:59:57.412 -06:00 [INF] Successfully validated the token.
-2021-12-07 01:59:57.418 -06:00 [INF] Authorization was successful.
-2021-12-07 01:59:57.421 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.SaveLeccionGrupo (XavierSchoolMicroService)'
-2021-12-07 01:59:57.423 -06:00 [INF] Route matched with {action = "SaveLeccionGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SaveLeccionGrupo(XavierSchoolMicroService.Controllers.RequestBodyPublic) on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 01:59:57.440 -06:00 [INF] Usuario -> Intentando registrar una nueva leccion en grupo : XavierSchoolMicroService.Models.Leccionpublica
-2021-12-07 01:59:57.462 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 01:59:57.481 -06:00 [INF] Registrando la informacion de la leccion en grupo : XavierSchoolMicroService.Models.Leccionpublica hour: XavierSchoolMicroService.Models.Leccionpublica
-2021-12-07 01:59:57.622 -06:00 [INF] Executed DbCommand (46ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Int32), @p2='?' (DbType = Time), @p3='?' (Size = 45)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `leccionpublica` (`fecha_leccionpu`, `fk_profesor_lpub`, `hora_leccionpub`, `nombre_leccionpub`)
-VALUES (@p0, @p1, @p2, @p3);
-SELECT `idLeccionpub`
-FROM `leccionpublica`
+2021-12-07 16:49:03.653 -06:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2021-12-07 16:49:03.657 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.UsuariosController.AutenticarUsuario (XavierSchoolMicroService) in 67.7864ms
+2021-12-07 16:49:03.663 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.UsuariosController.AutenticarUsuario (XavierSchoolMicroService)'
+2021-12-07 16:49:03.668 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/usuarios/autenticar application/json 64 - 400 - text/plain;+charset=utf-8 96.3968ms
+2021-12-07 16:49:15.639 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/usuarios/save application/json 154
+2021-12-07 16:49:15.645 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.UsuariosController.SaveUsuarios (XavierSchoolMicroService)'
+2021-12-07 16:49:15.650 -06:00 [INF] Route matched with {action = "SaveUsuarios", controller = "Usuarios"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SaveUsuarios(XavierSchoolMicroService.Models.Usuario) on controller XavierSchoolMicroService.Controllers.UsuariosController (XavierSchoolMicroService).
+2021-12-07 16:49:15.665 -06:00 [INF] Aninimo -> Intentando registrar un nuevo usuario : XavierSchoolMicroService.Models.Usuario
+2021-12-07 16:49:15.668 -06:00 [INF] Registrando informmacion de nueno usuario XavierSchoolMicroService.Models.Usuario
+2021-12-07 16:49:15.680 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
+2021-12-07 16:49:15.763 -06:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 45), @p1='?' (Size = 65), @p2='?' (DbType = SByte), @p3='?' (Size = 45), @p4='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `usuarios` (`apellido_usuario`, `correo`, `estadoAdministrador`, `nombre_usuario`, `password`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT `idUsuario`
+FROM `usuarios`
 WHERE ROW_COUNT() = 1
- AND `idLeccionpub`=LAST_INSERT_ID();
-2021-12-07 01:59:57.651 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`
-FROM `leccionpublica` AS `l`
-ORDER BY `l`.`idLeccionpub` DESC
-LIMIT 1
-2021-12-07 01:59:57.698 -06:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32), @p9='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `lecciones_estudiantes` (`fk_estudiante_lec`, `fk_leccion_est`)
-VALUES (@p0, @p1),
-(@p2, @p3),
-(@p4, @p5),
-(@p6, @p7),
-(@p8, @p9);
-2021-12-07 01:59:57.711 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Boolean'.
-2021-12-07 01:59:57.715 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.SaveLeccionGrupo (XavierSchoolMicroService) in 290.0744ms
-2021-12-07 01:59:57.717 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.SaveLeccionGrupo (XavierSchoolMicroService)'
-2021-12-07 01:59:57.718 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/lecGrupo/save application/json 153 - 200 - application/json;+charset=utf-8 318.4625ms
-2021-12-07 02:13:37.747 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/estudiantes/all - -
-2021-12-07 02:13:37.753 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:13:37.755 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/estudiantes/all - - - 204 - - 7.4181ms
-2021-12-07 02:13:37.758 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/estudiantes/all - -
-2021-12-07 02:13:37.760 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:13:37.762 -06:00 [INF] Failed to validate the token.
-Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
-   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
-   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
-   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
-   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
-   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
-2021-12-07 02:13:37.767 -06:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
-2021-12-07 02:13:37.770 -06:00 [INF] Authorization failed. These requirements were not met:
-DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
-2021-12-07 02:13:37.772 -06:00 [INF] AuthenticationScheme: Bearer was challenged.
-2021-12-07 02:13:37.774 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/estudiantes/all - - - 401 0 - 16.3934ms
-2021-12-07 02:13:41.331 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/usuarios/autenticar - -
-2021-12-07 02:13:41.334 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:13:41.336 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/usuarios/autenticar - - - 204 - - 4.7954ms
-2021-12-07 02:13:41.338 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/usuarios/autenticar application/json 64
-2021-12-07 02:13:41.339 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:13:41.340 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.UsuariosController.AutenticarUsuario (XavierSchoolMicroService)'
-2021-12-07 02:13:41.341 -06:00 [INF] Route matched with {action = "AutenticarUsuario", controller = "Usuarios"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AutenticarUsuario(XavierSchoolMicroService.Models.Usuario) on controller XavierSchoolMicroService.Controllers.UsuariosController (XavierSchoolMicroService).
-2021-12-07 02:13:41.344 -06:00 [INF] User -> Intentando autenticar al usuario charlyXavier@outlook.com
-2021-12-07 02:13:41.346 -06:00 [INF] Auntenticando usuario con mail : charlyXavier@outlook.com
-2021-12-07 02:13:41.353 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:13:41.378 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__mail_0='?' (Size = 65)], CommandType='"Text"', CommandTimeout='30']
+ AND `idUsuario`=LAST_INSERT_ID();
+2021-12-07 16:49:15.810 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Boolean'.
+2021-12-07 16:49:15.814 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.UsuariosController.SaveUsuarios (XavierSchoolMicroService) in 153.9589ms
+2021-12-07 16:49:15.818 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.UsuariosController.SaveUsuarios (XavierSchoolMicroService)'
+2021-12-07 16:49:15.822 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/usuarios/save application/json 154 - 200 - application/json;+charset=utf-8 182.5225ms
+2021-12-07 16:49:21.270 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/usuarios/autenticar application/json 64
+2021-12-07 16:49:21.273 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.UsuariosController.AutenticarUsuario (XavierSchoolMicroService)'
+2021-12-07 16:49:21.277 -06:00 [INF] Route matched with {action = "AutenticarUsuario", controller = "Usuarios"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AutenticarUsuario(XavierSchoolMicroService.Models.Usuario) on controller XavierSchoolMicroService.Controllers.UsuariosController (XavierSchoolMicroService).
+2021-12-07 16:49:21.283 -06:00 [INF] Anonimo -> Intentando autenticar al usuario magnum@outlook.com
+2021-12-07 16:49:21.285 -06:00 [INF] Auntenticando usuario con mail : magnum@outlook.com
+2021-12-07 16:49:21.291 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
+2021-12-07 16:49:21.300 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__mail_0='?' (Size = 65)], CommandType='"Text"', CommandTimeout='30']
 SELECT `u`.`idUsuario`, `u`.`apellido_usuario`, `u`.`correo`, `u`.`estadoAdministrador`, `u`.`nombre_usuario`, `u`.`password`
 FROM `usuarios` AS `u`
 WHERE `u`.`correo` = @__mail_0
 LIMIT 1
-2021-12-07 02:13:41.383 -06:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType25`5[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Byte, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:13:41.385 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.UsuariosController.AutenticarUsuario (XavierSchoolMicroService) in 41.8641ms
-2021-12-07 02:13:41.386 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.UsuariosController.AutenticarUsuario (XavierSchoolMicroService)'
-2021-12-07 02:13:41.388 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/usuarios/autenticar application/json 64 - 200 - application/json;+charset=utf-8 50.0240ms
-2021-12-07 02:13:41.415 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/estudiantes/all - -
-2021-12-07 02:13:41.417 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:13:41.418 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:13:41.420 -06:00 [INF] Authorization was successful.
-2021-12-07 02:13:41.421 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.EstudiantesController.GetAllEstudiantes (XavierSchoolMicroService)'
-2021-12-07 02:13:41.424 -06:00 [INF] Route matched with {action = "GetAllEstudiantes", controller = "Estudiantes"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllEstudiantes() on controller XavierSchoolMicroService.Controllers.EstudiantesController (XavierSchoolMicroService).
-2021-12-07 02:13:41.428 -06:00 [INF] User -> Intentando obtener la lista de estudiantes
-2021-12-07 02:13:41.432 -06:00 [INF] Obteniendo la lista de todos los estudiantes
-2021-12-07 02:13:41.434 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:13:41.526 -06:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `e`.`idEstudiante`, `e`.`activo_o_inactivo`, `e`.`apellido_estudiante`, `e`.`fecha_nacimiento`, `e`.`fk_nivelpoder_est`, `e`.`nombre_estudiante`, `e`.`nss_estudiante`, `n`.`idNivel`, `n`.`nombre_nivel`
-FROM `estudiantes` AS `e`
-INNER JOIN `nivelpoder` AS `n` ON `e`.`fk_nivelpoder_est` = `n`.`idNivel`
-2021-12-07 02:13:41.549 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:13:41.556 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.EstudiantesController.GetAllEstudiantes (XavierSchoolMicroService) in 129.5137ms
-2021-12-07 02:13:41.557 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.EstudiantesController.GetAllEstudiantes (XavierSchoolMicroService)'
-2021-12-07 02:13:41.559 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/estudiantes/all - - - 200 - application/json;+charset=utf-8 143.2392ms
-2021-12-07 02:14:15.781 -06:00 [INF] Application is shutting down...
-2021-12-07 02:16:55.308 -06:00 [INF] User profile is available. Using 'C:\Users\rpsau\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
-2021-12-07 02:16:55.473 -06:00 [INF] Now listening on: http://localhost:5000
-2021-12-07 02:16:55.477 -06:00 [INF] Application started. Press Ctrl+C to shut down.
-2021-12-07 02:16:55.479 -06:00 [INF] Hosting environment: Development
-2021-12-07 02:16:55.480 -06:00 [INF] Content root path: D:\Downloads\Pliss\XavierSchool\XavierSchoolMicroService
-2021-12-07 02:17:43.970 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 02:17:44.002 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:17:44.009 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - - - 204 - - 41.9623ms
-2021-12-07 02:17:44.016 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 02:17:44.021 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:17:44.158 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:17:44.163 -06:00 [INF] Authorization was successful.
-2021-12-07 02:17:44.164 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 02:17:44.178 -06:00 [INF] Route matched with {action = "GetAllLeccionesGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllLeccionesGrupo() on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 02:17:44.277 -06:00 [INF] User -> Intentando obtener la lista de Lecciones en grupo
-2021-12-07 02:17:44.282 -06:00 [INF] Obteniendo la lista de todas las lecciones en grupo
-2021-12-07 02:17:44.778 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:17:45.171 -06:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`, `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-2021-12-07 02:17:45.261 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:17:45.292 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService) in 1107.3327ms
-2021-12-07 02:17:45.294 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 02:17:45.297 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - - - 200 - application/json;+charset=utf-8 1280.9462ms
-2021-12-07 02:17:48.775 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/CfDJ8PfWumRRUhBOhRIw3g1q9Y9DL8QSunUZQokiXWX4mDy7ppLEJFaprYeYydfATJqMXht6yDDjNBZEJyH3FeCtNyARVmNEWthEEgYSITOJ4ohiO9GUZmktABSPY7MUuAn6Ig - -
-2021-12-07 02:17:48.775 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/estuds/CfDJ8PfWumRRUhBOhRIw3g1q9Y9DL8QSunUZQokiXWX4mDy7ppLEJFaprYeYydfATJqMXht6yDDjNBZEJyH3FeCtNyARVmNEWthEEgYSITOJ4ohiO9GUZmktABSPY7MUuAn6Ig - -
-2021-12-07 02:17:48.778 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:17:48.779 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:17:48.781 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/CfDJ8PfWumRRUhBOhRIw3g1q9Y9DL8QSunUZQokiXWX4mDy7ppLEJFaprYeYydfATJqMXht6yDDjNBZEJyH3FeCtNyARVmNEWthEEgYSITOJ4ohiO9GUZmktABSPY7MUuAn6Ig - - - 204 - - 5.7702ms
-2021-12-07 02:17:48.781 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/estuds/CfDJ8PfWumRRUhBOhRIw3g1q9Y9DL8QSunUZQokiXWX4mDy7ppLEJFaprYeYydfATJqMXht6yDDjNBZEJyH3FeCtNyARVmNEWthEEgYSITOJ4ohiO9GUZmktABSPY7MUuAn6Ig - - - 204 - - 6.0579ms
-2021-12-07 02:17:48.783 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/estuds/CfDJ8PfWumRRUhBOhRIw3g1q9Y9DL8QSunUZQokiXWX4mDy7ppLEJFaprYeYydfATJqMXht6yDDjNBZEJyH3FeCtNyARVmNEWthEEgYSITOJ4ohiO9GUZmktABSPY7MUuAn6Ig - -
-2021-12-07 02:17:48.783 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/CfDJ8PfWumRRUhBOhRIw3g1q9Y9DL8QSunUZQokiXWX4mDy7ppLEJFaprYeYydfATJqMXht6yDDjNBZEJyH3FeCtNyARVmNEWthEEgYSITOJ4ohiO9GUZmktABSPY7MUuAn6Ig - -
-2021-12-07 02:17:48.785 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:17:48.785 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:17:48.788 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:17:48.789 -06:00 [INF] Authorization was successful.
-2021-12-07 02:17:48.789 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:17:48.790 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetEstudiantesByIdLeccion (XavierSchoolMicroService)'
-2021-12-07 02:17:48.792 -06:00 [INF] Authorization was successful.
-2021-12-07 02:17:48.793 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetLeccionGrupo (XavierSchoolMicroService)'
-2021-12-07 02:17:48.801 -06:00 [INF] Route matched with {action = "GetEstudiantesByIdLeccion", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetEstudiantesByIdLeccion(System.String) on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 02:17:48.801 -06:00 [INF] Route matched with {action = "GetLeccionGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetLeccionGrupo(System.String) on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 02:17:48.810 -06:00 [INF] User -> Intentando obtener los estudiantes de una leccion en grupo con id : CfDJ8PfWumRRUhBOhRIw3g1q9Y9DL8QSunUZQokiXWX4mDy7ppLEJFaprYeYydfATJqMXht6yDDjNBZEJyH3FeCtNyARVmNEWthEEgYSITOJ4ohiO9GUZmktABSPY7MUuAn6Ig
-2021-12-07 02:17:48.810 -06:00 [INF] User -> Intentando obtener los datos de una leccion en grupo con id : CfDJ8PfWumRRUhBOhRIw3g1q9Y9DL8QSunUZQokiXWX4mDy7ppLEJFaprYeYydfATJqMXht6yDDjNBZEJyH3FeCtNyARVmNEWthEEgYSITOJ4ohiO9GUZmktABSPY7MUuAn6Ig
-2021-12-07 02:17:48.814 -06:00 [INF] Obteniendo los estudiantes que asistieron a la leccion con id : 1
-2021-12-07 02:17:48.814 -06:00 [INF] Obteniendo la informacion de la leccion en grupo con el id : 1
-2021-12-07 02:17:48.838 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:17:48.838 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:17:48.869 -06:00 [INF] Executed DbCommand (6ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT `e`.`idEstudiante`, `e`.`activo_o_inactivo`, `e`.`apellido_estudiante`, `e`.`fecha_nacimiento`, `e`.`fk_nivelpoder_est`, `e`.`nombre_estudiante`, `e`.`nss_estudiante`, `n`.`idNivel`, `n`.`nombre_nivel`
-FROM `estudiantes` AS `e`
-INNER JOIN `lecciones_estudiantes` AS `l` ON `e`.`idEstudiante` = `l`.`fk_estudiante_lec`
-INNER JOIN `nivelpoder` AS `n` ON `e`.`fk_nivelpoder_est` = `n`.`idNivel`
-WHERE `l`.`fk_leccion_est` = @__Parse_0
-2021-12-07 02:17:48.878 -06:00 [INF] Executed DbCommand (2ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-WHERE `l`.`idLeccionpub` = @__Parse_0
-2021-12-07 02:17:48.891 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`, `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-WHERE `l`.`idLeccionpub` = @__Parse_0
+2021-12-07 16:49:21.338 -06:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType25`5[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Byte, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2021-12-07 16:49:21.348 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.UsuariosController.AutenticarUsuario (XavierSchoolMicroService) in 65.8192ms
+2021-12-07 16:49:21.353 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.UsuariosController.AutenticarUsuario (XavierSchoolMicroService)'
+2021-12-07 16:49:21.359 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/usuarios/autenticar application/json 64 - 200 - application/json;+charset=utf-8 89.4059ms
+2021-12-07 16:49:45.607 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/profesores/update/7 application/json 170
+2021-12-07 16:49:45.610 -06:00 [INF] Successfully validated the token.
+2021-12-07 16:49:45.612 -06:00 [INF] Authorization was successful.
+2021-12-07 16:49:45.614 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.ProfesoresController.UpdateProfesor (XavierSchoolMicroService)'
+2021-12-07 16:49:45.619 -06:00 [INF] Route matched with {action = "UpdateProfesor", controller = "Profesores"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult UpdateProfesor(XavierSchoolMicroService.Models.Profesore, System.String) on controller XavierSchoolMicroService.Controllers.ProfesoresController (XavierSchoolMicroService).
+2021-12-07 16:49:45.632 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
+2021-12-07 16:49:45.643 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`correo`
+FROM `usuarios` AS `u`
+WHERE `u`.`idUsuario` = @__Parse_0
 LIMIT 1
-2021-12-07 02:17:48.895 -06:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType14`5[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:17:48.896 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetLeccionGrupo (XavierSchoolMicroService) in 90.5222ms
-2021-12-07 02:17:48.897 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetLeccionGrupo (XavierSchoolMicroService)'
-2021-12-07 02:17:48.897 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:17:48.900 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/CfDJ8PfWumRRUhBOhRIw3g1q9Y9DL8QSunUZQokiXWX4mDy7ppLEJFaprYeYydfATJqMXht6yDDjNBZEJyH3FeCtNyARVmNEWthEEgYSITOJ4ohiO9GUZmktABSPY7MUuAn6Ig - - - 200 - application/json;+charset=utf-8 117.0787ms
-2021-12-07 02:17:48.907 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetEstudiantesByIdLeccion (XavierSchoolMicroService) in 103.5374ms
-2021-12-07 02:17:48.909 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetEstudiantesByIdLeccion (XavierSchoolMicroService)'
-2021-12-07 02:17:48.910 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/estuds/CfDJ8PfWumRRUhBOhRIw3g1q9Y9DL8QSunUZQokiXWX4mDy7ppLEJFaprYeYydfATJqMXht6yDDjNBZEJyH3FeCtNyARVmNEWthEEgYSITOJ4ohiO9GUZmktABSPY7MUuAn6Ig - - - 200 - application/json;+charset=utf-8 127.6706ms
-2021-12-07 02:17:52.204 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 02:17:52.207 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:17:52.207 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - - - 204 - - 3.1608ms
-2021-12-07 02:17:52.208 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 02:17:52.209 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:17:52.210 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:17:52.211 -06:00 [INF] Authorization was successful.
-2021-12-07 02:17:52.212 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 02:17:52.212 -06:00 [INF] Route matched with {action = "GetAllLeccionesGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllLeccionesGrupo() on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 02:17:52.214 -06:00 [INF] User -> Intentando obtener la lista de Lecciones en grupo
-2021-12-07 02:17:52.215 -06:00 [INF] Obteniendo la lista de todas las lecciones en grupo
-2021-12-07 02:17:52.222 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:17:52.227 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`, `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-2021-12-07 02:17:52.231 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:17:52.232 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService) in 18.4889ms
-2021-12-07 02:17:52.234 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 02:17:52.236 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - - - 200 - application/json;+charset=utf-8 28.1186ms
-2021-12-07 02:18:31.239 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/estudiantes/all - -
-2021-12-07 02:18:31.241 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:18:31.243 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/estudiantes/all - - - 204 - - 3.3359ms
-2021-12-07 02:18:31.245 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/estudiantes/all - -
-2021-12-07 02:18:31.248 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:18:31.251 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:18:31.252 -06:00 [INF] Authorization was successful.
-2021-12-07 02:18:31.252 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.EstudiantesController.GetAllEstudiantes (XavierSchoolMicroService)'
-2021-12-07 02:18:31.254 -06:00 [INF] Route matched with {action = "GetAllEstudiantes", controller = "Estudiantes"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllEstudiantes() on controller XavierSchoolMicroService.Controllers.EstudiantesController (XavierSchoolMicroService).
-2021-12-07 02:18:31.256 -06:00 [INF] User -> Intentando obtener la lista de estudiantes
-2021-12-07 02:18:31.258 -06:00 [INF] Obteniendo la lista de todos los estudiantes
-2021-12-07 02:18:31.260 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:18:31.267 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `e`.`idEstudiante`, `e`.`activo_o_inactivo`, `e`.`apellido_estudiante`, `e`.`fecha_nacimiento`, `e`.`fk_nivelpoder_est`, `e`.`nombre_estudiante`, `e`.`nss_estudiante`, `n`.`idNivel`, `n`.`nombre_nivel`
-FROM `estudiantes` AS `e`
-INNER JOIN `nivelpoder` AS `n` ON `e`.`fk_nivelpoder_est` = `n`.`idNivel`
-2021-12-07 02:18:31.271 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:18:31.273 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.EstudiantesController.GetAllEstudiantes (XavierSchoolMicroService) in 17.162ms
-2021-12-07 02:18:31.274 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.EstudiantesController.GetAllEstudiantes (XavierSchoolMicroService)'
-2021-12-07 02:18:31.276 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/estudiantes/all - - - 200 - application/json;+charset=utf-8 31.0230ms
-2021-12-07 02:18:45.149 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/profesores/all - -
-2021-12-07 02:18:45.152 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:18:45.153 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/profesores/all - - - 204 - - 4.4728ms
-2021-12-07 02:18:45.158 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/profesores/all - -
-2021-12-07 02:18:45.161 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:18:45.163 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:18:45.164 -06:00 [INF] Authorization was successful.
-2021-12-07 02:18:45.165 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.ProfesoresController.GetAllProfesores (XavierSchoolMicroService)'
-2021-12-07 02:18:45.167 -06:00 [INF] Route matched with {action = "GetAllProfesores", controller = "Profesores"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllProfesores() on controller XavierSchoolMicroService.Controllers.ProfesoresController (XavierSchoolMicroService).
-2021-12-07 02:18:45.169 -06:00 [INF] User -> Intentando obtener la lista de las profesores
-2021-12-07 02:18:45.170 -06:00 [INF] Obteniendo la lista completa de profesores.
-2021-12-07 02:18:45.172 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:18:45.177 -06:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
-2021-12-07 02:18:45.178 -06:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
-2021-12-07 02:18:45.183 -06:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
-FROM `profesores` AS `p`
-LIMIT @__p_1 OFFSET @__p_0
-2021-12-07 02:18:45.186 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:18:45.192 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.ProfesoresController.GetAllProfesores (XavierSchoolMicroService) in 23.7301ms
-2021-12-07 02:18:45.196 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.ProfesoresController.GetAllProfesores (XavierSchoolMicroService)'
-2021-12-07 02:18:45.198 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/profesores/all - - - 200 - application/json;+charset=utf-8 40.4044ms
-2021-12-07 02:18:57.767 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/save - -
-2021-12-07 02:18:57.768 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:18:57.771 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/save - - - 204 - - 4.0696ms
-2021-12-07 02:18:57.773 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/lecGrupo/save application/json 787
-2021-12-07 02:18:57.774 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:18:57.775 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:18:57.777 -06:00 [INF] Authorization was successful.
-2021-12-07 02:18:57.777 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.SaveLeccionGrupo (XavierSchoolMicroService)'
-2021-12-07 02:18:57.779 -06:00 [INF] Route matched with {action = "SaveLeccionGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SaveLeccionGrupo(XavierSchoolMicroService.Controllers.RequestBodyPublic) on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 02:18:57.797 -06:00 [INF] Usuario -> Intentando registrar una nueva leccion en grupo : XavierSchoolMicroService.Models.Leccionpublica
-2021-12-07 02:18:57.800 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:18:57.820 -06:00 [INF] Registrando la informacion de la leccion en grupo : XavierSchoolMicroService.Models.Leccionpublica hour: XavierSchoolMicroService.Models.Leccionpublica
-2021-12-07 02:18:57.899 -06:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Int32), @p2='?' (DbType = Time), @p3='?' (Size = 45)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `leccionpublica` (`fecha_leccionpu`, `fk_profesor_lpub`, `hora_leccionpub`, `nombre_leccionpub`)
-VALUES (@p0, @p1, @p2, @p3);
-SELECT `idLeccionpub`
-FROM `leccionpublica`
-WHERE ROW_COUNT() = 1
- AND `idLeccionpub`=LAST_INSERT_ID();
-2021-12-07 02:18:57.928 -06:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`
-FROM `leccionpublica` AS `l`
-ORDER BY `l`.`idLeccionpub` DESC
+2021-12-07 16:49:45.650 -06:00 [INF] magnum@outlook.com -> Intentando registrar un nuevo maestro XavierSchoolMicroService.Models.Profesore
+2021-12-07 16:49:45.656 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`estadoAdministrador`
+FROM `usuarios` AS `u`
+WHERE `u`.`idUsuario` = @__Parse_0
 LIMIT 1
-2021-12-07 02:18:57.947 -06:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `lecciones_estudiantes` (`fk_estudiante_lec`, `fk_leccion_est`)
-VALUES (@p0, @p1),
-(@p2, @p3),
-(@p4, @p5),
-(@p6, @p7);
-2021-12-07 02:18:57.974 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Boolean'.
-2021-12-07 02:18:57.977 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.SaveLeccionGrupo (XavierSchoolMicroService) in 196.7812ms
-2021-12-07 02:18:57.978 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.SaveLeccionGrupo (XavierSchoolMicroService)'
-2021-12-07 02:18:57.979 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/lecGrupo/save application/json 787 - 200 - application/json;+charset=utf-8 206.3507ms
-2021-12-07 02:23:56.592 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 02:23:56.593 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:23:56.595 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - - - 204 - - 2.9399ms
-2021-12-07 02:23:56.596 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 02:23:56.598 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:23:56.600 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:23:56.602 -06:00 [INF] Authorization was successful.
-2021-12-07 02:23:56.602 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 02:23:56.604 -06:00 [INF] Route matched with {action = "GetAllLeccionesGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllLeccionesGrupo() on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 02:23:56.606 -06:00 [INF] User -> Intentando obtener la lista de Lecciones en grupo
-2021-12-07 02:23:56.607 -06:00 [INF] Obteniendo la lista de todas las lecciones en grupo
-2021-12-07 02:23:56.608 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:23:56.632 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`, `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-2021-12-07 02:23:56.636 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:23:56.637 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService) in 30.7289ms
-2021-12-07 02:23:56.639 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 02:23:56.639 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - - - 200 - application/json;+charset=utf-8 42.8429ms
-2021-12-07 02:24:03.237 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/CfDJ8PfWumRRUhBOhRIw3g1q9Y9INPI-KT2c9lVk1cPCWekrbmmFu0nbUWIDtJZ5MwPc-e1xcAj3Y8lkjcW7DhPg9Z44IJjmwS_pHBZ5rHHVdDkg-ONlNU9gpXbXiEf8GOBbow - -
-2021-12-07 02:24:03.238 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:24:03.238 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/estuds/CfDJ8PfWumRRUhBOhRIw3g1q9Y9INPI-KT2c9lVk1cPCWekrbmmFu0nbUWIDtJZ5MwPc-e1xcAj3Y8lkjcW7DhPg9Z44IJjmwS_pHBZ5rHHVdDkg-ONlNU9gpXbXiEf8GOBbow - -
-2021-12-07 02:24:03.240 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/CfDJ8PfWumRRUhBOhRIw3g1q9Y9INPI-KT2c9lVk1cPCWekrbmmFu0nbUWIDtJZ5MwPc-e1xcAj3Y8lkjcW7DhPg9Z44IJjmwS_pHBZ5rHHVdDkg-ONlNU9gpXbXiEf8GOBbow - - - 204 - - 3.2220ms
-2021-12-07 02:24:03.241 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:24:03.244 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/CfDJ8PfWumRRUhBOhRIw3g1q9Y9INPI-KT2c9lVk1cPCWekrbmmFu0nbUWIDtJZ5MwPc-e1xcAj3Y8lkjcW7DhPg9Z44IJjmwS_pHBZ5rHHVdDkg-ONlNU9gpXbXiEf8GOBbow - -
-2021-12-07 02:24:03.244 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/estuds/CfDJ8PfWumRRUhBOhRIw3g1q9Y9INPI-KT2c9lVk1cPCWekrbmmFu0nbUWIDtJZ5MwPc-e1xcAj3Y8lkjcW7DhPg9Z44IJjmwS_pHBZ5rHHVdDkg-ONlNU9gpXbXiEf8GOBbow - - - 204 - - 5.9554ms
-2021-12-07 02:24:03.246 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:24:03.248 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/estuds/CfDJ8PfWumRRUhBOhRIw3g1q9Y9INPI-KT2c9lVk1cPCWekrbmmFu0nbUWIDtJZ5MwPc-e1xcAj3Y8lkjcW7DhPg9Z44IJjmwS_pHBZ5rHHVdDkg-ONlNU9gpXbXiEf8GOBbow - -
-2021-12-07 02:24:03.249 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:24:03.250 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:24:03.252 -06:00 [INF] Authorization was successful.
-2021-12-07 02:24:03.254 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:24:03.255 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetLeccionGrupo (XavierSchoolMicroService)'
-2021-12-07 02:24:03.255 -06:00 [INF] Authorization was successful.
-2021-12-07 02:24:03.256 -06:00 [INF] Route matched with {action = "GetLeccionGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetLeccionGrupo(System.String) on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 02:24:03.257 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetEstudiantesByIdLeccion (XavierSchoolMicroService)'
-2021-12-07 02:24:03.259 -06:00 [INF] User -> Intentando obtener los datos de una leccion en grupo con id : CfDJ8PfWumRRUhBOhRIw3g1q9Y9INPI-KT2c9lVk1cPCWekrbmmFu0nbUWIDtJZ5MwPc-e1xcAj3Y8lkjcW7DhPg9Z44IJjmwS_pHBZ5rHHVdDkg-ONlNU9gpXbXiEf8GOBbow
-2021-12-07 02:24:03.260 -06:00 [INF] Route matched with {action = "GetEstudiantesByIdLeccion", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetEstudiantesByIdLeccion(System.String) on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 02:24:03.263 -06:00 [INF] Obteniendo la informacion de la leccion en grupo con el id : 13
-2021-12-07 02:24:03.268 -06:00 [INF] User -> Intentando obtener los estudiantes de una leccion en grupo con id : CfDJ8PfWumRRUhBOhRIw3g1q9Y9INPI-KT2c9lVk1cPCWekrbmmFu0nbUWIDtJZ5MwPc-e1xcAj3Y8lkjcW7DhPg9Z44IJjmwS_pHBZ5rHHVdDkg-ONlNU9gpXbXiEf8GOBbow
-2021-12-07 02:24:03.269 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:24:03.269 -06:00 [INF] Obteniendo los estudiantes que asistieron a la leccion con id : 13
-2021-12-07 02:24:03.271 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:24:03.273 -06:00 [INF] Executed DbCommand (0ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-WHERE `l`.`idLeccionpub` = @__Parse_0
-2021-12-07 02:24:03.277 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`, `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-WHERE `l`.`idLeccionpub` = @__Parse_0
-LIMIT 1
-2021-12-07 02:24:03.281 -06:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType14`5[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:24:03.283 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetLeccionGrupo (XavierSchoolMicroService) in 24.3886ms
-2021-12-07 02:24:03.284 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetLeccionGrupo (XavierSchoolMicroService)'
-2021-12-07 02:24:03.285 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/CfDJ8PfWumRRUhBOhRIw3g1q9Y9INPI-KT2c9lVk1cPCWekrbmmFu0nbUWIDtJZ5MwPc-e1xcAj3Y8lkjcW7DhPg9Z44IJjmwS_pHBZ5rHHVdDkg-ONlNU9gpXbXiEf8GOBbow - - - 200 - application/json;+charset=utf-8 41.6563ms
-2021-12-07 02:24:03.287 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT `e`.`idEstudiante`, `e`.`activo_o_inactivo`, `e`.`apellido_estudiante`, `e`.`fecha_nacimiento`, `e`.`fk_nivelpoder_est`, `e`.`nombre_estudiante`, `e`.`nss_estudiante`, `n`.`idNivel`, `n`.`nombre_nivel`
-FROM `estudiantes` AS `e`
-INNER JOIN `lecciones_estudiantes` AS `l` ON `e`.`idEstudiante` = `l`.`fk_estudiante_lec`
-INNER JOIN `nivelpoder` AS `n` ON `e`.`fk_nivelpoder_est` = `n`.`idNivel`
-WHERE `l`.`fk_leccion_est` = @__Parse_0
-2021-12-07 02:24:03.289 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:24:03.290 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetEstudiantesByIdLeccion (XavierSchoolMicroService) in 22.6404ms
-2021-12-07 02:24:03.292 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetEstudiantesByIdLeccion (XavierSchoolMicroService)'
-2021-12-07 02:24:03.292 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/estuds/CfDJ8PfWumRRUhBOhRIw3g1q9Y9INPI-KT2c9lVk1cPCWekrbmmFu0nbUWIDtJZ5MwPc-e1xcAj3Y8lkjcW7DhPg9Z44IJjmwS_pHBZ5rHHVdDkg-ONlNU9gpXbXiEf8GOBbow - - - 200 - application/json;+charset=utf-8 44.6173ms
-2021-12-07 02:24:45.680 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 02:24:45.683 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:24:45.684 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - - - 204 - - 3.3392ms
-2021-12-07 02:24:45.685 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 02:24:45.685 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:24:45.687 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:24:45.687 -06:00 [INF] Authorization was successful.
-2021-12-07 02:24:45.688 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 02:24:45.689 -06:00 [INF] Route matched with {action = "GetAllLeccionesGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllLeccionesGrupo() on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 02:24:45.691 -06:00 [INF] User -> Intentando obtener la lista de Lecciones en grupo
-2021-12-07 02:24:45.692 -06:00 [INF] Obteniendo la lista de todas las lecciones en grupo
-2021-12-07 02:24:45.695 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:24:45.699 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`, `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-2021-12-07 02:24:45.703 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:24:45.706 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService) in 15.0727ms
-2021-12-07 02:24:45.707 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 02:24:45.708 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - - - 200 - application/json;+charset=utf-8 22.7892ms
-2021-12-07 02:26:19.621 -06:00 [INF] Application is shutting down...
-2021-12-07 02:36:25.185 -06:00 [INF] User profile is available. Using 'C:\Users\rpsau\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
-2021-12-07 02:36:25.345 -06:00 [INF] Now listening on: http://localhost:5000
-2021-12-07 02:36:25.349 -06:00 [INF] Application started. Press Ctrl+C to shut down.
-2021-12-07 02:36:25.352 -06:00 [INF] Hosting environment: Development
-2021-12-07 02:36:25.353 -06:00 [INF] Content root path: D:\Downloads\Pliss\XavierSchool\XavierSchoolMicroService
-2021-12-07 02:37:21.998 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/lecPrivadas/save application/json 157
-2021-12-07 02:37:22.152 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:37:22.159 -06:00 [INF] Authorization was successful.
-2021-12-07 02:37:22.161 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionPrivadaController.SaveLeccionPrivada (XavierSchoolMicroService)'
-2021-12-07 02:37:22.183 -06:00 [INF] Route matched with {action = "SaveLeccionPrivada", controller = "LeccionPrivada"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SaveLeccionPrivada(RequestBodyPriv) on controller XavierSchoolMicroService.Controllers.LeccionPrivadaController (XavierSchoolMicroService).
-2021-12-07 02:37:22.335 -06:00 [INF] Usuario -> Intentando registrar una nueva leccion privada : XavierSchoolMicroService.Models.Leccionprivadum
-2021-12-07 02:37:22.339 -06:00 [INF] Registrando la informacion de la leccion privada : XavierSchoolMicroService.Models.Leccionprivadum hour: 12:30
-2021-12-07 02:37:22.827 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:37:23.190 -06:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Time), @p4='?' (Size = 45)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `leccionprivada` (`fecha_leccionpriv`, `fk_estudiante_lpriv`, `fk_profesor_lpriv`, `hora_leccionpriv`, `nombre_leccionpriv`)
-VALUES (@p0, @p1, @p2, @p3, @p4);
-SELECT `idLeccionpriv`
-FROM `leccionprivada`
-WHERE ROW_COUNT() = 1
- AND `idLeccionpriv`=LAST_INSERT_ID();
-2021-12-07 02:37:23.241 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Boolean'.
-2021-12-07 02:37:23.258 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionPrivadaController.SaveLeccionPrivada (XavierSchoolMicroService) in 1066.8577ms
-2021-12-07 02:37:23.262 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionPrivadaController.SaveLeccionPrivada (XavierSchoolMicroService)'
-2021-12-07 02:37:23.267 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/lecPrivadas/save application/json 157 - 200 - application/json;+charset=utf-8 1270.6085ms
-2021-12-07 02:37:36.529 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecPrivadas/all - -
-2021-12-07 02:37:36.535 -06:00 [INF] Failed to validate the token.
-Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
-   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
-   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
-   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
-   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
-   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
-2021-12-07 02:37:36.557 -06:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
-2021-12-07 02:37:36.561 -06:00 [INF] Authorization failed. These requirements were not met:
-DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
-2021-12-07 02:37:36.568 -06:00 [INF] AuthenticationScheme: Bearer was challenged.
-2021-12-07 02:37:36.571 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecPrivadas/all - - - 401 0 - 41.5322ms
-2021-12-07 02:37:53.914 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecPrivadas/all - -
-2021-12-07 02:37:53.917 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:37:53.919 -06:00 [INF] Authorization was successful.
-2021-12-07 02:37:53.919 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionPrivadaController.GetAllLeccionesPrivada (XavierSchoolMicroService)'
-2021-12-07 02:37:53.921 -06:00 [INF] Route matched with {action = "GetAllLeccionesPrivada", controller = "LeccionPrivada"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllLeccionesPrivada() on controller XavierSchoolMicroService.Controllers.LeccionPrivadaController (XavierSchoolMicroService).
-2021-12-07 02:37:53.924 -06:00 [INF] User -> Intentando obtener la lista de Lecciones en grupo
-2021-12-07 02:37:53.927 -06:00 [INF] Obteniendo la lista de  todas las lecciones privadas
-2021-12-07 02:37:53.950 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:37:54.139 -06:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpriv`, `l`.`fecha_leccionpriv`, `l`.`fk_estudiante_lpriv`, `l`.`fk_profesor_lpriv`, `l`.`hora_leccionpriv`, `l`.`nombre_leccionpriv`, `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`, `e`.`idEstudiante`, `e`.`activo_o_inactivo`, `e`.`apellido_estudiante`, `e`.`fecha_nacimiento`, `e`.`fk_nivelpoder_est`, `e`.`nombre_estudiante`, `e`.`nss_estudiante`
-FROM `leccionprivada` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpriv` = `p`.`idProfesor`
-INNER JOIN `estudiantes` AS `e` ON `l`.`fk_estudiante_lpriv` = `e`.`idEstudiante`
-2021-12-07 02:37:54.181 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:37:54.197 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionPrivadaController.GetAllLeccionesPrivada (XavierSchoolMicroService) in 273.5261ms
-2021-12-07 02:37:54.201 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionPrivadaController.GetAllLeccionesPrivada (XavierSchoolMicroService)'
-2021-12-07 02:37:54.203 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecPrivadas/all - - - 200 - application/json;+charset=utf-8 288.6697ms
-2021-12-07 02:39:48.441 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/lecPrivadas/save application/json 424
-2021-12-07 02:39:48.444 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:39:48.446 -06:00 [INF] Authorization was successful.
-2021-12-07 02:39:48.447 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionPrivadaController.SaveLeccionPrivada (XavierSchoolMicroService)'
-2021-12-07 02:39:48.450 -06:00 [INF] Route matched with {action = "SaveLeccionPrivada", controller = "LeccionPrivada"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SaveLeccionPrivada(RequestBodyPriv) on controller XavierSchoolMicroService.Controllers.LeccionPrivadaController (XavierSchoolMicroService).
-2021-12-07 02:39:48.455 -06:00 [INF] Usuario -> Intentando registrar una nueva leccion privada : XavierSchoolMicroService.Models.Leccionprivadum
-2021-12-07 02:39:48.457 -06:00 [INF] Registrando la informacion de la leccion privada : XavierSchoolMicroService.Models.Leccionprivadum hour: 12:30
-2021-12-07 02:39:48.465 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:39:48.474 -06:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Time), @p4='?' (Size = 45)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `leccionprivada` (`fecha_leccionpriv`, `fk_estudiante_lpriv`, `fk_profesor_lpriv`, `hora_leccionpriv`, `nombre_leccionpriv`)
-VALUES (@p0, @p1, @p2, @p3, @p4);
-SELECT `idLeccionpriv`
-FROM `leccionprivada`
-WHERE ROW_COUNT() = 1
- AND `idLeccionpriv`=LAST_INSERT_ID();
-2021-12-07 02:39:48.499 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Boolean'.
-2021-12-07 02:39:48.504 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionPrivadaController.SaveLeccionPrivada (XavierSchoolMicroService) in 51.8231ms
-2021-12-07 02:39:48.506 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionPrivadaController.SaveLeccionPrivada (XavierSchoolMicroService)'
-2021-12-07 02:39:48.507 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/lecPrivadas/save application/json 424 - 200 - application/json;+charset=utf-8 65.9901ms
-2021-12-07 02:39:52.263 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecPrivadas/all - -
-2021-12-07 02:39:52.266 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:39:52.267 -06:00 [INF] Authorization was successful.
-2021-12-07 02:39:52.268 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionPrivadaController.GetAllLeccionesPrivada (XavierSchoolMicroService)'
-2021-12-07 02:39:52.269 -06:00 [INF] Route matched with {action = "GetAllLeccionesPrivada", controller = "LeccionPrivada"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllLeccionesPrivada() on controller XavierSchoolMicroService.Controllers.LeccionPrivadaController (XavierSchoolMicroService).
-2021-12-07 02:39:52.270 -06:00 [INF] User -> Intentando obtener la lista de Lecciones en grupo
-2021-12-07 02:39:52.271 -06:00 [INF] Obteniendo la lista de  todas las lecciones privadas
-2021-12-07 02:39:52.271 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:39:52.277 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpriv`, `l`.`fecha_leccionpriv`, `l`.`fk_estudiante_lpriv`, `l`.`fk_profesor_lpriv`, `l`.`hora_leccionpriv`, `l`.`nombre_leccionpriv`, `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`, `e`.`idEstudiante`, `e`.`activo_o_inactivo`, `e`.`apellido_estudiante`, `e`.`fecha_nacimiento`, `e`.`fk_nivelpoder_est`, `e`.`nombre_estudiante`, `e`.`nss_estudiante`
-FROM `leccionprivada` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpriv` = `p`.`idProfesor`
-INNER JOIN `estudiantes` AS `e` ON `l`.`fk_estudiante_lpriv` = `e`.`idEstudiante`
-2021-12-07 02:39:52.280 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:39:52.281 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionPrivadaController.GetAllLeccionesPrivada (XavierSchoolMicroService) in 11.3145ms
-2021-12-07 02:39:52.283 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionPrivadaController.GetAllLeccionesPrivada (XavierSchoolMicroService)'
-2021-12-07 02:39:52.283 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecPrivadas/all - - - 200 - application/json;+charset=utf-8 19.9789ms
-2021-12-07 02:48:55.529 -06:00 [INF] Application is shutting down...
-2021-12-07 02:49:07.441 -06:00 [INF] User profile is available. Using 'C:\Users\rpsau\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
-2021-12-07 02:49:07.613 -06:00 [INF] Now listening on: http://localhost:5000
-2021-12-07 02:49:07.617 -06:00 [INF] Application started. Press Ctrl+C to shut down.
-2021-12-07 02:49:07.617 -06:00 [INF] Hosting environment: Development
-2021-12-07 02:49:07.618 -06:00 [INF] Content root path: D:\Downloads\Pliss\XavierSchool\XavierSchoolMicroService
-2021-12-07 02:50:44.605 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/presentaciones/save application/json 207
-2021-12-07 02:50:44.753 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:50:44.759 -06:00 [INF] Authorization was successful.
-2021-12-07 02:50:44.761 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.PresentacionesController.SavePresentacion (XavierSchoolMicroService)'
-2021-12-07 02:50:44.779 -06:00 [INF] Route matched with {action = "SavePresentacion", controller = "Presentaciones"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePresentacion(XavierSchoolMicroService.Controllers.RequestBodyPresentacion) on controller XavierSchoolMicroService.Controllers.PresentacionesController (XavierSchoolMicroService).
-2021-12-07 02:50:44.911 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.PresentacionesController.SavePresentacion (XavierSchoolMicroService) in 123.2611ms
-2021-12-07 02:50:44.915 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.PresentacionesController.SavePresentacion (XavierSchoolMicroService)'
-2021-12-07 02:50:44.917 -06:00 [ERR] An unhandled exception has occurred while executing the request.
-System.NullReferenceException: Object reference not set to an instance of an object.
-   at XavierSchoolMicroService.Controllers.PresentacionesController.SavePresentacion(RequestBodyPresentacion req) in D:\Downloads\Pliss\XavierSchool\XavierSchoolMicroService\Controllers\PresentacionesController.cs:line 89
-   at lambda_method7(Closure , Object , Object[] )
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
---- End of stack trace from previous location ---
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
---- End of stack trace from previous location ---
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
-   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
-2021-12-07 02:50:44.988 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/presentaciones/save application/json 207 - 500 - text/plain 385.2047ms
-2021-12-07 02:51:55.889 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/presentaciones/save application/json 231
-2021-12-07 02:51:55.894 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:51:55.896 -06:00 [INF] Authorization was successful.
-2021-12-07 02:51:55.898 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.PresentacionesController.SavePresentacion (XavierSchoolMicroService)'
-2021-12-07 02:51:55.901 -06:00 [INF] Route matched with {action = "SavePresentacion", controller = "Presentaciones"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePresentacion(XavierSchoolMicroService.Controllers.RequestBodyPresentacion) on controller XavierSchoolMicroService.Controllers.PresentacionesController (XavierSchoolMicroService).
-2021-12-07 02:51:55.910 -06:00 [INF] Usuario -> Intentando registrar una nueva presentacion : XavierSchoolMicroService.Models.Presentacione
-2021-12-07 02:51:56.437 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:51:56.640 -06:00 [INF] Registrando la informacion de una nueva presentacion : XavierSchoolMicroService.Models.Presentacione hora: 10:20
-2021-12-07 02:51:56.814 -06:00 [INF] Executed DbCommand (38ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Time), @p2='?' (Size = 45)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `presentaciones` (`fecha_presentacion`, `hora_presentacion`, `nombre_presentacion`)
-VALUES (@p0, @p1, @p2);
-SELECT `idPresentacion`
-FROM `presentaciones`
-WHERE ROW_COUNT() = 1
- AND `idPresentacion`=LAST_INSERT_ID();
-2021-12-07 02:51:56.984 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `p`.`idPresentacion`, `p`.`fecha_presentacion`, `p`.`hora_presentacion`, `p`.`nombre_presentacion`
-FROM `presentaciones` AS `p`
-ORDER BY `p`.`idPresentacion` DESC
-LIMIT 1
-2021-12-07 02:51:57.049 -06:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = SByte), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = SByte), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (DbType = SByte), @p9='?' (DbType = Int32), @p10='?' (DbType = Int32), @p11='?' (DbType = SByte), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (DbType = Int32), @p15='?' (DbType = Int32), @p16='?' (DbType = Int32), @p17='?' (DbType = Int32), @p18='?' (DbType = Int32), @p19='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `presentaciones_estudiantes` (`fk_estudiante_pres`, `fk_presentacion_est`, `estado_presentacion`)
-VALUES (@p0, @p1, @p2),
-(@p3, @p4, @p5),
-(@p6, @p7, @p8),
-(@p9, @p10, @p11);
-INSERT INTO `presentaciones_profesores` (`fk_presentacion_pres`, `fk_profesor_pres`)
-VALUES (@p12, @p13),
-(@p14, @p15),
-(@p16, @p17),
-(@p18, @p19);
-2021-12-07 02:51:57.073 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Boolean'.
-2021-12-07 02:51:57.082 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.PresentacionesController.SavePresentacion (XavierSchoolMicroService) in 1180.0318ms
-2021-12-07 02:51:57.084 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.PresentacionesController.SavePresentacion (XavierSchoolMicroService)'
-2021-12-07 02:51:57.087 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/presentaciones/save application/json 231 - 200 - application/json;+charset=utf-8 1198.0175ms
-2021-12-07 02:52:07.090 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/presentaciones/all - -
-2021-12-07 02:52:07.094 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:52:07.098 -06:00 [INF] Authorization was successful.
-2021-12-07 02:52:07.099 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.PresentacionesController.GetAllPresentaciones (XavierSchoolMicroService)'
-2021-12-07 02:52:07.100 -06:00 [INF] Route matched with {action = "GetAllPresentaciones", controller = "Presentaciones"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllPresentaciones() on controller XavierSchoolMicroService.Controllers.PresentacionesController (XavierSchoolMicroService).
-2021-12-07 02:52:07.103 -06:00 [INF] User -> Intentando obtener la lista de las presentaciones
-2021-12-07 02:52:07.104 -06:00 [INF] Obteniendo la lista completa de presentaciones
-2021-12-07 02:52:07.105 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:52:07.140 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `p`.`idPresentacion`, `p`.`fecha_presentacion`, `p`.`hora_presentacion`, `p`.`nombre_presentacion`
-FROM `presentaciones` AS `p`
-2021-12-07 02:52:07.157 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:52:07.170 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.PresentacionesController.GetAllPresentaciones (XavierSchoolMicroService) in 67.8755ms
-2021-12-07 02:52:07.173 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.PresentacionesController.GetAllPresentaciones (XavierSchoolMicroService)'
-2021-12-07 02:52:07.174 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/presentaciones/all - - - 200 - application/json;+charset=utf-8 83.3594ms
-2021-12-07 02:54:05.635 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/presentaciones/save application/json 492
-2021-12-07 02:54:05.638 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:54:05.639 -06:00 [INF] Authorization was successful.
-2021-12-07 02:54:05.640 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.PresentacionesController.SavePresentacion (XavierSchoolMicroService)'
-2021-12-07 02:54:05.640 -06:00 [INF] Route matched with {action = "SavePresentacion", controller = "Presentaciones"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SavePresentacion(XavierSchoolMicroService.Controllers.RequestBodyPresentacion) on controller XavierSchoolMicroService.Controllers.PresentacionesController (XavierSchoolMicroService).
-2021-12-07 02:54:05.642 -06:00 [INF] Usuario -> Intentando registrar una nueva presentacion : XavierSchoolMicroService.Models.Presentacione
-2021-12-07 02:54:05.668 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:54:05.672 -06:00 [INF] Registrando la informacion de una nueva presentacion : XavierSchoolMicroService.Models.Presentacione hora: 10:20
-2021-12-07 02:54:05.677 -06:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Time), @p2='?' (Size = 45)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `presentaciones` (`fecha_presentacion`, `hora_presentacion`, `nombre_presentacion`)
-VALUES (@p0, @p1, @p2);
-SELECT `idPresentacion`
-FROM `presentaciones`
-WHERE ROW_COUNT() = 1
- AND `idPresentacion`=LAST_INSERT_ID();
-2021-12-07 02:54:05.683 -06:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `p`.`idPresentacion`, `p`.`fecha_presentacion`, `p`.`hora_presentacion`, `p`.`nombre_presentacion`
-FROM `presentaciones` AS `p`
-ORDER BY `p`.`idPresentacion` DESC
-LIMIT 1
-2021-12-07 02:54:05.688 -06:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = SByte), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = SByte), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (DbType = SByte), @p9='?' (DbType = Int32), @p10='?' (DbType = Int32), @p11='?' (DbType = SByte), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (DbType = Int32), @p15='?' (DbType = Int32), @p16='?' (DbType = Int32), @p17='?' (DbType = Int32), @p18='?' (DbType = Int32), @p19='?' (DbType = Int32), @p20='?' (DbType = Int32), @p21='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `presentaciones_estudiantes` (`fk_estudiante_pres`, `fk_presentacion_est`, `estado_presentacion`)
-VALUES (@p0, @p1, @p2),
-(@p3, @p4, @p5),
-(@p6, @p7, @p8),
-(@p9, @p10, @p11);
-INSERT INTO `presentaciones_profesores` (`fk_presentacion_pres`, `fk_profesor_pres`)
-VALUES (@p12, @p13),
-(@p14, @p15),
-(@p16, @p17),
-(@p18, @p19),
-(@p20, @p21);
-2021-12-07 02:54:05.714 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Boolean'.
-2021-12-07 02:54:05.717 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.PresentacionesController.SavePresentacion (XavierSchoolMicroService) in 75.88ms
-2021-12-07 02:54:05.718 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.PresentacionesController.SavePresentacion (XavierSchoolMicroService)'
-2021-12-07 02:54:05.719 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/presentaciones/save application/json 492 - 200 - application/json;+charset=utf-8 84.3450ms
-2021-12-07 02:54:11.293 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/presentaciones/all - -
-2021-12-07 02:54:11.295 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:54:11.297 -06:00 [INF] Authorization was successful.
-2021-12-07 02:54:11.298 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.PresentacionesController.GetAllPresentaciones (XavierSchoolMicroService)'
-2021-12-07 02:54:11.300 -06:00 [INF] Route matched with {action = "GetAllPresentaciones", controller = "Presentaciones"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllPresentaciones() on controller XavierSchoolMicroService.Controllers.PresentacionesController (XavierSchoolMicroService).
-2021-12-07 02:54:11.302 -06:00 [INF] User -> Intentando obtener la lista de las presentaciones
-2021-12-07 02:54:11.303 -06:00 [INF] Obteniendo la lista completa de presentaciones
-2021-12-07 02:54:11.303 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:54:11.306 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `p`.`idPresentacion`, `p`.`fecha_presentacion`, `p`.`hora_presentacion`, `p`.`nombre_presentacion`
-FROM `presentaciones` AS `p`
-2021-12-07 02:54:11.310 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:54:11.311 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.PresentacionesController.GetAllPresentaciones (XavierSchoolMicroService) in 9.412ms
-2021-12-07 02:54:11.314 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.PresentacionesController.GetAllPresentaciones (XavierSchoolMicroService)'
-2021-12-07 02:54:11.315 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/presentaciones/all - - - 200 - application/json;+charset=utf-8 22.0939ms
-2021-12-07 02:55:16.007 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 02:55:16.011 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:55:16.014 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - - - 204 - - 6.7419ms
-2021-12-07 02:55:16.017 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 02:55:16.020 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:55:16.021 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:55:16.022 -06:00 [INF] Authorization was successful.
-2021-12-07 02:55:16.022 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 02:55:16.024 -06:00 [INF] Route matched with {action = "GetAllLeccionesGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllLeccionesGrupo() on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 02:55:16.026 -06:00 [INF] User -> Intentando obtener la lista de Lecciones en grupo
-2021-12-07 02:55:16.028 -06:00 [INF] Obteniendo la lista de todas las lecciones en grupo
-2021-12-07 02:55:16.029 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:55:16.058 -06:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`, `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-2021-12-07 02:55:16.082 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:55:16.085 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService) in 59.5769ms
-2021-12-07 02:55:16.087 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 02:55:16.088 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - - - 200 - application/json;+charset=utf-8 70.9311ms
-2021-12-07 02:55:34.237 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/estudiantes/all - -
-2021-12-07 02:55:34.240 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:55:34.242 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/estudiantes/all - - - 204 - - 4.7057ms
-2021-12-07 02:55:34.244 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/estudiantes/all - -
-2021-12-07 02:55:34.248 -06:00 [INF] CORS policy execution successful.
-2021-12-07 02:55:34.251 -06:00 [INF] Successfully validated the token.
-2021-12-07 02:55:34.252 -06:00 [INF] Authorization was successful.
-2021-12-07 02:55:34.253 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.EstudiantesController.GetAllEstudiantes (XavierSchoolMicroService)'
-2021-12-07 02:55:34.254 -06:00 [INF] Route matched with {action = "GetAllEstudiantes", controller = "Estudiantes"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllEstudiantes() on controller XavierSchoolMicroService.Controllers.EstudiantesController (XavierSchoolMicroService).
-2021-12-07 02:55:34.256 -06:00 [INF] User -> Intentando obtener la lista de estudiantes
-2021-12-07 02:55:34.257 -06:00 [INF] Obteniendo la lista de todos los estudiantes
-2021-12-07 02:55:34.258 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 02:55:34.270 -06:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `e`.`idEstudiante`, `e`.`activo_o_inactivo`, `e`.`apellido_estudiante`, `e`.`fecha_nacimiento`, `e`.`fk_nivelpoder_est`, `e`.`nombre_estudiante`, `e`.`nss_estudiante`, `n`.`idNivel`, `n`.`nombre_nivel`
-FROM `estudiantes` AS `e`
-INNER JOIN `nivelpoder` AS `n` ON `e`.`fk_nivelpoder_est` = `n`.`idNivel`
-2021-12-07 02:55:34.288 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 02:55:34.296 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.EstudiantesController.GetAllEstudiantes (XavierSchoolMicroService) in 40.1375ms
-2021-12-07 02:55:34.300 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.EstudiantesController.GetAllEstudiantes (XavierSchoolMicroService)'
-2021-12-07 02:55:34.302 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/estudiantes/all - - - 200 - application/json;+charset=utf-8 57.7057ms
-2021-12-07 03:01:30.239 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/estudiantes/all - -
-2021-12-07 03:01:30.242 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:01:30.245 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/estudiantes/all - - - 204 - - 6.2357ms
-2021-12-07 03:01:30.248 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/estudiantes/all - -
-2021-12-07 03:01:30.249 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:01:30.250 -06:00 [INF] Successfully validated the token.
-2021-12-07 03:01:30.251 -06:00 [INF] Authorization was successful.
-2021-12-07 03:01:30.251 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.EstudiantesController.GetAllEstudiantes (XavierSchoolMicroService)'
-2021-12-07 03:01:30.252 -06:00 [INF] Route matched with {action = "GetAllEstudiantes", controller = "Estudiantes"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllEstudiantes() on controller XavierSchoolMicroService.Controllers.EstudiantesController (XavierSchoolMicroService).
-2021-12-07 03:01:30.254 -06:00 [INF] User -> Intentando obtener la lista de estudiantes
-2021-12-07 03:01:30.255 -06:00 [INF] Obteniendo la lista de todos los estudiantes
-2021-12-07 03:01:30.258 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 03:01:30.287 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `e`.`idEstudiante`, `e`.`activo_o_inactivo`, `e`.`apellido_estudiante`, `e`.`fecha_nacimiento`, `e`.`fk_nivelpoder_est`, `e`.`nombre_estudiante`, `e`.`nss_estudiante`, `n`.`idNivel`, `n`.`nombre_nivel`
-FROM `estudiantes` AS `e`
-INNER JOIN `nivelpoder` AS `n` ON `e`.`fk_nivelpoder_est` = `n`.`idNivel`
-2021-12-07 03:01:30.293 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 03:01:30.295 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.EstudiantesController.GetAllEstudiantes (XavierSchoolMicroService) in 41.2105ms
-2021-12-07 03:01:30.296 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.EstudiantesController.GetAllEstudiantes (XavierSchoolMicroService)'
-2021-12-07 03:01:30.297 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/estudiantes/all - - - 200 - application/json;+charset=utf-8 49.3364ms
-2021-12-07 03:01:38.056 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/profesores/all - -
-2021-12-07 03:01:38.060 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:01:38.061 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/profesores/all - - - 204 - - 4.8927ms
-2021-12-07 03:01:38.063 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/profesores/all - -
-2021-12-07 03:01:38.065 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:01:38.068 -06:00 [INF] Successfully validated the token.
-2021-12-07 03:01:38.070 -06:00 [INF] Authorization was successful.
-2021-12-07 03:01:38.072 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.ProfesoresController.GetAllProfesores (XavierSchoolMicroService)'
-2021-12-07 03:01:38.077 -06:00 [INF] Route matched with {action = "GetAllProfesores", controller = "Profesores"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllProfesores() on controller XavierSchoolMicroService.Controllers.ProfesoresController (XavierSchoolMicroService).
-2021-12-07 03:01:38.080 -06:00 [INF] User -> Intentando obtener la lista de las profesores
-2021-12-07 03:01:38.081 -06:00 [INF] Obteniendo la lista completa de profesores.
-2021-12-07 03:01:38.082 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 03:01:38.084 -06:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
-2021-12-07 03:01:38.085 -06:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
-2021-12-07 03:01:38.094 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
-FROM `profesores` AS `p`
-LIMIT @__p_1 OFFSET @__p_0
-2021-12-07 03:01:38.097 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 03:01:38.099 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.ProfesoresController.GetAllProfesores (XavierSchoolMicroService) in 20.071ms
-2021-12-07 03:01:38.101 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.ProfesoresController.GetAllProfesores (XavierSchoolMicroService)'
-2021-12-07 03:01:38.102 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/profesores/all - - - 200 - application/json;+charset=utf-8 39.3166ms
-2021-12-07 03:01:50.046 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/save - -
-2021-12-07 03:01:50.048 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:01:50.051 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/save - - - 204 - - 5.0445ms
-2021-12-07 03:01:50.054 -06:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/lecGrupo/save application/json 647
-2021-12-07 03:01:50.055 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:01:50.057 -06:00 [INF] Successfully validated the token.
-2021-12-07 03:01:50.057 -06:00 [INF] Authorization was successful.
-2021-12-07 03:01:50.058 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.SaveLeccionGrupo (XavierSchoolMicroService)'
-2021-12-07 03:01:50.060 -06:00 [INF] Route matched with {action = "SaveLeccionGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SaveLeccionGrupo(XavierSchoolMicroService.Controllers.RequestBodyPublic) on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 03:01:50.065 -06:00 [INF] Usuario -> Intentando registrar una nueva leccion en grupo : XavierSchoolMicroService.Models.Leccionpublica
-2021-12-07 03:01:50.068 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 03:01:50.077 -06:00 [INF] Registrando la informacion de la leccion en grupo : XavierSchoolMicroService.Models.Leccionpublica hour: XavierSchoolMicroService.Models.Leccionpublica
-2021-12-07 03:01:50.087 -06:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Int32), @p2='?' (DbType = Time), @p3='?' (Size = 45)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `leccionpublica` (`fecha_leccionpu`, `fk_profesor_lpub`, `hora_leccionpub`, `nombre_leccionpub`)
-VALUES (@p0, @p1, @p2, @p3);
-SELECT `idLeccionpub`
-FROM `leccionpublica`
-WHERE ROW_COUNT() = 1
- AND `idLeccionpub`=LAST_INSERT_ID();
-2021-12-07 03:01:50.097 -06:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`
-FROM `leccionpublica` AS `l`
-ORDER BY `l`.`idLeccionpub` DESC
-LIMIT 1
-2021-12-07 03:01:50.110 -06:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `lecciones_estudiantes` (`fk_estudiante_lec`, `fk_leccion_est`)
-VALUES (@p0, @p1);
-2021-12-07 03:01:50.114 -06:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `lecciones_estudiantes` (`fk_estudiante_lec`, `fk_leccion_est`)
-VALUES (@p0, @p1);
-2021-12-07 03:01:50.115 -06:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-INSERT INTO `lecciones_estudiantes` (`fk_estudiante_lec`, `fk_leccion_est`)
-VALUES (@p0, @p1);
-2021-12-07 03:01:50.122 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Boolean'.
-2021-12-07 03:01:50.124 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.SaveLeccionGrupo (XavierSchoolMicroService) in 62.7263ms
-2021-12-07 03:01:50.126 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.SaveLeccionGrupo (XavierSchoolMicroService)'
-2021-12-07 03:01:50.127 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/lecGrupo/save application/json 647 - 200 - application/json;+charset=utf-8 73.3257ms
-2021-12-07 03:01:55.627 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 03:01:55.628 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:01:55.630 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - - - 204 - - 2.7043ms
-2021-12-07 03:01:55.631 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 03:01:55.632 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:01:55.634 -06:00 [INF] Successfully validated the token.
-2021-12-07 03:01:55.637 -06:00 [INF] Authorization was successful.
-2021-12-07 03:01:55.637 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 03:01:55.638 -06:00 [INF] Route matched with {action = "GetAllLeccionesGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllLeccionesGrupo() on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 03:01:55.641 -06:00 [INF] User -> Intentando obtener la lista de Lecciones en grupo
-2021-12-07 03:01:55.642 -06:00 [INF] Obteniendo la lista de todas las lecciones en grupo
-2021-12-07 03:01:55.643 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 03:01:55.652 -06:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`, `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-2021-12-07 03:01:55.658 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 03:01:55.659 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService) in 18.7187ms
-2021-12-07 03:01:55.660 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 03:01:55.661 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - - - 200 - application/json;+charset=utf-8 30.4493ms
-2021-12-07 03:02:00.633 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/CfDJ8PfWumRRUhBOhRIw3g1q9Y_Qxo4D8UqwzuWQ28k67RpwV85QGOI7rnVYVOMiNqDu3g_qJQJBsg5ygyDrew01wb4T0FgAv-tuHWS1rOP71ctmgqEJPB4vzbL5JgqN3KZO_Q - -
-2021-12-07 03:02:00.635 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/estuds/CfDJ8PfWumRRUhBOhRIw3g1q9Y_Qxo4D8UqwzuWQ28k67RpwV85QGOI7rnVYVOMiNqDu3g_qJQJBsg5ygyDrew01wb4T0FgAv-tuHWS1rOP71ctmgqEJPB4vzbL5JgqN3KZO_Q - -
-2021-12-07 03:02:00.635 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:02:00.637 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:02:00.639 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/CfDJ8PfWumRRUhBOhRIw3g1q9Y_Qxo4D8UqwzuWQ28k67RpwV85QGOI7rnVYVOMiNqDu3g_qJQJBsg5ygyDrew01wb4T0FgAv-tuHWS1rOP71ctmgqEJPB4vzbL5JgqN3KZO_Q - - - 204 - - 5.7422ms
-2021-12-07 03:02:00.639 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/estuds/CfDJ8PfWumRRUhBOhRIw3g1q9Y_Qxo4D8UqwzuWQ28k67RpwV85QGOI7rnVYVOMiNqDu3g_qJQJBsg5ygyDrew01wb4T0FgAv-tuHWS1rOP71ctmgqEJPB4vzbL5JgqN3KZO_Q - - - 204 - - 4.2903ms
-2021-12-07 03:02:00.640 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/estuds/CfDJ8PfWumRRUhBOhRIw3g1q9Y_Qxo4D8UqwzuWQ28k67RpwV85QGOI7rnVYVOMiNqDu3g_qJQJBsg5ygyDrew01wb4T0FgAv-tuHWS1rOP71ctmgqEJPB4vzbL5JgqN3KZO_Q - -
-2021-12-07 03:02:00.641 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/CfDJ8PfWumRRUhBOhRIw3g1q9Y_Qxo4D8UqwzuWQ28k67RpwV85QGOI7rnVYVOMiNqDu3g_qJQJBsg5ygyDrew01wb4T0FgAv-tuHWS1rOP71ctmgqEJPB4vzbL5JgqN3KZO_Q - -
-2021-12-07 03:02:00.642 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:02:00.643 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:02:00.644 -06:00 [INF] Successfully validated the token.
-2021-12-07 03:02:00.645 -06:00 [INF] Successfully validated the token.
-2021-12-07 03:02:00.646 -06:00 [INF] Authorization was successful.
-2021-12-07 03:02:00.646 -06:00 [INF] Authorization was successful.
-2021-12-07 03:02:00.647 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetEstudiantesByIdLeccion (XavierSchoolMicroService)'
-2021-12-07 03:02:00.648 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetLeccionGrupo (XavierSchoolMicroService)'
-2021-12-07 03:02:00.650 -06:00 [INF] Route matched with {action = "GetEstudiantesByIdLeccion", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetEstudiantesByIdLeccion(System.String) on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 03:02:00.650 -06:00 [INF] Route matched with {action = "GetLeccionGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetLeccionGrupo(System.String) on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 03:02:00.652 -06:00 [INF] User -> Intentando obtener los estudiantes de una leccion en grupo con id : CfDJ8PfWumRRUhBOhRIw3g1q9Y_Qxo4D8UqwzuWQ28k67RpwV85QGOI7rnVYVOMiNqDu3g_qJQJBsg5ygyDrew01wb4T0FgAv-tuHWS1rOP71ctmgqEJPB4vzbL5JgqN3KZO_Q
-2021-12-07 03:02:00.653 -06:00 [INF] User -> Intentando obtener los datos de una leccion en grupo con id : CfDJ8PfWumRRUhBOhRIw3g1q9Y_Qxo4D8UqwzuWQ28k67RpwV85QGOI7rnVYVOMiNqDu3g_qJQJBsg5ygyDrew01wb4T0FgAv-tuHWS1rOP71ctmgqEJPB4vzbL5JgqN3KZO_Q
-2021-12-07 03:02:00.655 -06:00 [INF] Obteniendo la informacion de la leccion en grupo con el id : 14
-2021-12-07 03:02:00.655 -06:00 [INF] Obteniendo los estudiantes que asistieron a la leccion con id : 14
-2021-12-07 03:02:00.655 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 03:02:00.656 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 03:02:00.669 -06:00 [INF] Executed DbCommand (2ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT `e`.`idEstudiante`, `e`.`activo_o_inactivo`, `e`.`apellido_estudiante`, `e`.`fecha_nacimiento`, `e`.`fk_nivelpoder_est`, `e`.`nombre_estudiante`, `e`.`nss_estudiante`, `n`.`idNivel`, `n`.`nombre_nivel`
-FROM `estudiantes` AS `e`
-INNER JOIN `lecciones_estudiantes` AS `l` ON `e`.`idEstudiante` = `l`.`fk_estudiante_lec`
-INNER JOIN `nivelpoder` AS `n` ON `e`.`fk_nivelpoder_est` = `n`.`idNivel`
-WHERE `l`.`fk_leccion_est` = @__Parse_0
-2021-12-07 03:02:00.675 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 03:02:00.677 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetEstudiantesByIdLeccion (XavierSchoolMicroService) in 26.1029ms
-2021-12-07 03:02:00.680 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetEstudiantesByIdLeccion (XavierSchoolMicroService)'
-2021-12-07 03:02:00.681 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT COUNT(*)
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-WHERE `l`.`idLeccionpub` = @__Parse_0
-2021-12-07 03:02:00.682 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/estuds/CfDJ8PfWumRRUhBOhRIw3g1q9Y_Qxo4D8UqwzuWQ28k67RpwV85QGOI7rnVYVOMiNqDu3g_qJQJBsg5ygyDrew01wb4T0FgAv-tuHWS1rOP71ctmgqEJPB4vzbL5JgqN3KZO_Q - - - 200 - application/json;+charset=utf-8 41.2100ms
-2021-12-07 03:02:00.692 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`, `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-WHERE `l`.`idLeccionpub` = @__Parse_0
-LIMIT 1
-2021-12-07 03:02:00.695 -06:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType14`5[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 03:02:00.698 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetLeccionGrupo (XavierSchoolMicroService) in 45.1947ms
-2021-12-07 03:02:00.701 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetLeccionGrupo (XavierSchoolMicroService)'
-2021-12-07 03:02:00.701 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/CfDJ8PfWumRRUhBOhRIw3g1q9Y_Qxo4D8UqwzuWQ28k67RpwV85QGOI7rnVYVOMiNqDu3g_qJQJBsg5ygyDrew01wb4T0FgAv-tuHWS1rOP71ctmgqEJPB4vzbL5JgqN3KZO_Q - - - 200 - application/json;+charset=utf-8 60.2629ms
-2021-12-07 03:02:12.153 -06:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 03:02:12.156 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:02:12.157 -06:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/lecGrupo/all - - - 204 - - 3.8966ms
-2021-12-07 03:02:12.159 -06:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - -
-2021-12-07 03:02:12.159 -06:00 [INF] CORS policy execution successful.
-2021-12-07 03:02:12.160 -06:00 [INF] Successfully validated the token.
-2021-12-07 03:02:12.161 -06:00 [INF] Authorization was successful.
-2021-12-07 03:02:12.161 -06:00 [INF] Executing endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 03:02:12.163 -06:00 [INF] Route matched with {action = "GetAllLeccionesGrupo", controller = "LeccionGrupo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllLeccionesGrupo() on controller XavierSchoolMicroService.Controllers.LeccionGrupoController (XavierSchoolMicroService).
-2021-12-07 03:02:12.165 -06:00 [INF] User -> Intentando obtener la lista de Lecciones en grupo
-2021-12-07 03:02:12.166 -06:00 [INF] Obteniendo la lista de todas las lecciones en grupo
-2021-12-07 03:02:12.168 -06:00 [INF] Entity Framework Core 5.0.12 initialized 'escuela_xavierContext' using provider 'MySql.EntityFrameworkCore' with options: None
-2021-12-07 03:02:12.170 -06:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-SELECT `l`.`idLeccionpub`, `l`.`fecha_leccionpu`, `l`.`fk_profesor_lpub`, `l`.`hora_leccionpub`, `l`.`nombre_leccionpub`, `p`.`idProfesor`, `p`.`activo_o_inactivo`, `p`.`apellido_profesor`, `p`.`fecha_nacimientopr`, `p`.`nombre_profesor`, `p`.`nss_profesor`
-FROM `leccionpublica` AS `l`
-INNER JOIN `profesores` AS `p` ON `l`.`fk_profesor_lpub` = `p`.`idProfesor`
-2021-12-07 03:02:12.172 -06:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
-2021-12-07 03:02:12.174 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService) in 9.1565ms
-2021-12-07 03:02:12.176 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.LeccionGrupoController.GetAllLeccionesGrupo (XavierSchoolMicroService)'
-2021-12-07 03:02:12.176 -06:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/lecGrupo/all - - - 200 - application/json;+charset=utf-8 17.7178ms
-2021-12-07 03:02:20.623 -06:00 [INF] Application is shutting down...
+2021-12-07 16:49:45.670 -06:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2021-12-07 16:49:45.674 -06:00 [INF] Executed action XavierSchoolMicroService.Controllers.ProfesoresController.UpdateProfesor (XavierSchoolMicroService) in 44.5788ms
+2021-12-07 16:49:45.680 -06:00 [INF] Executed endpoint 'XavierSchoolMicroService.Controllers.ProfesoresController.UpdateProfesor (XavierSchoolMicroService)'
+2021-12-07 16:49:45.687 -06:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/api/profesores/update/7 application/json 170 - 401 - text/plain;+charset=utf-8 79.5773ms
+2021-12-07 16:52:20.468 -06:00 [INF] Application is shutting down...

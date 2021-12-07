@@ -7,7 +7,7 @@ namespace XavierSchoolMicroService.Services
 {
     public interface IServiceProfesores
     {
-        IQueryable<object> GetAll(int skip, int take);
+        IQueryable<object> GetAll();
         object GetProfesor(string id);
         bool SaveProfesor(Profesore profesor);
         bool UpdateProfesor(Profesore profesore, string id);

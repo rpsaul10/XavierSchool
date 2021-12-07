@@ -22,12 +22,12 @@ namespace XavierSchoolMicroService.Bussiness
             _context = context;
             _protector = provider.CreateProtector(PURPOSE);
         }
-        public IQueryable<object> GetAll(int skip, int take)
+        public IQueryable<object> GetAll()
         {
             try
             {
                 _logger.LogInformation("Obteniendo la lista completa de profesores.");
-                var teachers = _context.Profesores.Skip(skip).Take(take).Select(p => CleanProfesorData(p, _protector));
+                var teachers = _context.Profesores.Select(p => CleanProfesorData(p, _protector));
                 return teachers;
             }catch (System.Security.Cryptography.CryptographicException ce)
             {
